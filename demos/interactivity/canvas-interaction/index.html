@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/vexflow-examples/css/2-col.css">
+    
+
+    <link rel="stylesheet" href="/vexflow-examples/css/theme.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  
+    <title>canvas interactions</title>
+</head>
+<body>
+    <div class="container">
+      
+      <div class="nav-container">
+    <h3 class="nav-title">Examples</h3>
+    <div class="site-nav">
+  
+  
+
+  
+    
+    
+    <div class="section">
+      <h3 class="section-header">
+        Components
+      </h3>
+      
+        <ul class="section-links">
+          
+            <li>
+              <a href="/vexflow-examples/demos/components/hairpin/" class="">hairpin</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/components/textbracket/" class="">textbracket</a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  
+    
+    
+    <div class="section">
+      <h3 class="section-header">
+        Entry
+      </h3>
+      
+        <ul class="section-links">
+          
+            <li>
+              <a href="/vexflow-examples/demos/entry/vexflow-bravura.esm/" class="">vexflow-bravura.esm.js</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/entry/vexflow-bravura/" class="">vexflow-bravura.js</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/entry/vexflow-core.esm/" class="">vexflow-core.esm.js</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/entry/vexflow-core/" class="">vexflow-core.js</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/entry/vexflow-debug-with-tests/" class="">vexflow-debug-with-tests.js</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/entry/vexflow-debug/" class="">vexflow-debug.js</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/entry/vexflow.esm/" class="">vexflow.esm.js</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/entry/vexflow/" class="">vexflow.js</a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  
+    
+    
+    <div class="section">
+      <h3 class="section-header">
+        Fonts
+      </h3>
+      
+        <ul class="section-links">
+          
+            <li>
+              <a href="/vexflow-examples/demos/fonts/async-await/" class="">Async Await</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/fonts/async-promise/" class="">Async Promise</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/fonts/bravura/" class="">Bravura</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/fonts/bravura-score/" class="">Bravura Score</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/fonts/five-staves/" class="">Five Staves</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/fonts/music/" class="">Music</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/fonts/text/" class="">Text</a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  
+    
+    
+    <div class="section">
+      <h3 class="section-header">
+        Interactivity
+      </h3>
+      
+        <ul class="section-links">
+          
+            <li>
+              <a href="/vexflow-examples/demos/interactivity/ui/" class="">Hover Events</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/interactivity/canvas-interaction/" class="active">canvas interactions</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/interactivity/svg-interaction/" class="">svg interactions</a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  
+    
+    
+    <div class="section">
+      <h3 class="section-header">
+        Modules
+      </h3>
+      
+        <ul class="section-links">
+          
+            <li>
+              <a href="/vexflow-examples/demos/modules/script-tag/" class="">Async Await</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/modules/module/" class="">ES Modules</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/modules/both/" class="">Module and Script</a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  
+    
+    
+    <div class="section">
+      <h3 class="section-header">
+        Node
+      </h3>
+      
+        <ul class="section-links">
+          
+            <li>
+              <a href="/vexflow-examples/demos/node/canvas/" class="">Canvas</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/node/font-draw/" class="">Font~Draw</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/node/import1/" class="">Import 1</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/node/import2/" class="">Import 2</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/node/import3/" class="">Import 3</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/node/pdf-canvas/" class="">PDF Canvas</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/node/pdf-svg/" class="">PDF SVG</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/node/require1/" class="">Require 1</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/node/require2/" class="">Require 2</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/node/svg/" class="">SVG</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/node/customcontext/" class="">customContext</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/node/font-load-2/" class="">font-load-2</a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  
+    
+    
+    <div class="section">
+      <h3 class="section-header">
+        Opentype
+      </h3>
+      
+        <ul class="section-links">
+          
+            <li>
+              <a href="/vexflow-examples/demos/opentype/canvas/" class="">Canvas</a>
+            </li>
+          
+            <li>
+              <a href="/vexflow-examples/demos/opentype/load/" class="">Load</a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  
+    
+    
+    <div class="section">
+      <h3 class="section-header">
+        Worker
+      </h3>
+      
+        <ul class="section-links">
+          
+            <li>
+              <a href="/vexflow-examples/demos/worker/" class="">Using Workers</a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  
+</div>
+
+</div>
+      
+
+        <main class="main-content">
+            <button id="open-sidebar-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"></path></svg>
+            </button>
+            
+<h1 id="canvas-interactions" tabindex="-1"><a class="header-anchor" href="#canvas-interactions">canvas interactions</a></h1>
+
+
+
+
+<iframe width="100%" height="250" srcdoc="
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;!-- IMPORTANT: Set the character set to UTF-8. Otherwise you may get weird symbols on the score. --&gt;
+    &lt;meta charset=&#34;utf-8&#34; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- Canvas where the scores will be output --&gt;
+    &lt;canvas id=&#34;output&#34;&gt;&lt;/div&gt;
+
+    &lt;!-- Load library --&gt;
+    &lt;script src=&#34;https://cdn.jsdelivr.net/npm/vexflow@5.0.0/build/cjs/vexflow-core.js&#34;&gt;&lt;/script&gt;
+
+    &lt;script&gt;
+        /* global VexFlow */
+        VexFlow.loadFonts(&#39;Bravura&#39;, &#39;Academico&#39;).then(() =&gt; {
+          VexFlow.setFonts(&#39;Bravura&#39;, &#39;Academico&#39;);
+          const { Factory, StaveHairpin } = VexFlow;
+          const vf = new Factory({
+            renderer: { elementId: &#39;output&#39;, width: 250, height: 150 },
+          });
+          const score = vf.EasyScore();
+    
+          let notes = score.notes(&#39;C4/q, F#4, B5, Bb4&#39;)
+          let voice = score.voice(notes)
+          const system = vf.System();
+          let stave = system.addStave({voices: [voice]}).addClef(&#39;treble&#39;).addTimeSignature(&#39;4/4&#39;)
+    
+          vf.draw()
+
+          let canvas = document.getElementById(&#39;output&#39;)
+    
+          canvas?.addEventListener(&#39;click&#39;, (ev) =&gt; {
+            let adjustedPosition = adjustCoordinates(ev, canvas)
+
+            for (const note of notes) {
+            if (isInBounding(adjustedPosition, note.getBoundingBox())) {
+                toggleNoteColor(note);
+                break; // stop after the first matching note
+                }
+            }
+            });
+    
+          // note: StemmableNote
+          function toggleNoteColor(note){
+            if (note.hasClass(&#39;selected&#39;)) {
+                note.setStyle({ fillStyle: &#39;black&#39;, strokeStyle: &#39;black&#39; });
+                note.drawWithStyle();
+                note.removeClass(&#39;selected&#39;)
+                return
+            } 
+            note.setStyle({ fillStyle: &#39;red&#39;, strokeStyle: &#39;red&#39; });
+            note.drawWithStyle();
+            note.addClass(&#39;selected&#39;)
+            }
+            // helper to see if click event is in a given bounding box
+            // pos: MousePosition, box: BoundingBox
+            function isInBounding(pos, box) {
+                const startingX = box.getX();
+                const startingY = box.getY();
+                const endX = startingX + box.getW();
+                const endY = startingY + box.getH();
+
+                const isWithinX = pos.x &gt;= startingX &amp;&amp; pos.x &lt;= endX;
+                const isWithinY = pos.y &gt;= startingY &amp;&amp; pos.y &lt;= endY;
+
+                return isWithinX &amp;&amp; isWithinY;
+            }
+
+            // helper to adjust coordinates from client space to canvas space
+            // ev: mouse event, element: HTMLElement
+            function adjustCoordinates(ev, element) {
+                const rect = element.getBoundingClientRect();
+                return { x: ev.clientX - rect.left, y: ev.clientY - rect.top };
+            }
+        });
+        &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+" title="canvas-interaction.html"></iframe>
+
+<form action="https://jsfiddle.net/api/post/library/pure/" method="post" target="_blank">
+  <textarea hidden="" name="html">
+<html>
+  <head>
+    <!-- IMPORTANT: Set the character set to UTF-8. Otherwise you may get weird symbols on the score. -->
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <!-- Canvas where the scores will be output -->
+    <canvas id="output"></canvas></body></html></textarea></form></main></div>
+
+    <!-- Load library -->
+    <script src="https://cdn.jsdelivr.net/npm/vexflow@5.0.0/build/cjs/vexflow-core.js"></script>
+
+    <script>
+        /* global VexFlow */
+        VexFlow.loadFonts('Bravura', 'Academico').then(() => {
+          VexFlow.setFonts('Bravura', 'Academico');
+          const { Factory, StaveHairpin } = VexFlow;
+          const vf = new Factory({
+            renderer: { elementId: 'output', width: 250, height: 150 },
+          });
+          const score = vf.EasyScore();
+    
+          let notes = score.notes('C4/q, F#4, B5, Bb4')
+          let voice = score.voice(notes)
+          const system = vf.System();
+          let stave = system.addStave({voices: [voice]}).addClef('treble').addTimeSignature('4/4')
+    
+          vf.draw()
+
+          let canvas = document.getElementById('output')
+    
+          canvas?.addEventListener('click', (ev) => {
+            let adjustedPosition = adjustCoordinates(ev, canvas)
+
+            for (const note of notes) {
+            if (isInBounding(adjustedPosition, note.getBoundingBox())) {
+                toggleNoteColor(note);
+                break; // stop after the first matching note
+                }
+            }
+            });
+    
+          // note: StemmableNote
+          function toggleNoteColor(note){
+            if (note.hasClass('selected')) {
+                note.setStyle({ fillStyle: 'black', strokeStyle: 'black' });
+                note.drawWithStyle();
+                note.removeClass('selected')
+                return
+            } 
+            note.setStyle({ fillStyle: 'red', strokeStyle: 'red' });
+            note.drawWithStyle();
+            note.addClass('selected')
+            }
+            // helper to see if click event is in a given bounding box
+            // pos: MousePosition, box: BoundingBox
+            function isInBounding(pos, box) {
+                const startingX = box.getX();
+                const startingY = box.getY();
+                const endX = startingX + box.getW();
+                const endY = startingY + box.getH();
+
+                const isWithinX = pos.x >= startingX && pos.x <= endX;
+                const isWithinY = pos.y >= startingY && pos.y <= endY;
+
+                return isWithinX && isWithinY;
+            }
+
+            // helper to adjust coordinates from client space to canvas space
+            // ev: mouse event, element: HTMLElement
+            function adjustCoordinates(ev, element) {
+                const rect = element.getBoundingClientRect();
+                return { x: ev.clientX - rect.left, y: ev.clientY - rect.top };
+            }
+        });
+        </script>
+  </body>
+</html>
+<br>
+  <input type="submit" value="Edit in JSFiddle">
+
+
+<pre><code class="language-javascript">
+
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;!-- IMPORTANT: Set the character set to UTF-8. Otherwise you may get weird symbols on the score. --&gt;
+    &lt;meta charset=&#34;utf-8&#34; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- Canvas where the scores will be output --&gt;
+    &lt;canvas id=&#34;output&#34;&gt;&lt;/div&gt;
+
+    &lt;!-- Load library --&gt;
+    &lt;script src=&#34;https://cdn.jsdelivr.net/npm/vexflow@5.0.0/build/cjs/vexflow-core.js&#34;&gt;&lt;/script&gt;
+
+    &lt;script&gt;
+        /* global VexFlow */
+        VexFlow.loadFonts(&#39;Bravura&#39;, &#39;Academico&#39;).then(() =&gt; {
+          VexFlow.setFonts(&#39;Bravura&#39;, &#39;Academico&#39;);
+          const { Factory, StaveHairpin } = VexFlow;
+          const vf = new Factory({
+            renderer: { elementId: &#39;output&#39;, width: 250, height: 150 },
+          });
+          const score = vf.EasyScore();
+    
+          let notes = score.notes(&#39;C4/q, F#4, B5, Bb4&#39;)
+          let voice = score.voice(notes)
+          const system = vf.System();
+          let stave = system.addStave({voices: [voice]}).addClef(&#39;treble&#39;).addTimeSignature(&#39;4/4&#39;)
+    
+          vf.draw()
+
+          let canvas = document.getElementById(&#39;output&#39;)
+    
+          canvas?.addEventListener(&#39;click&#39;, (ev) =&gt; {
+            let adjustedPosition = adjustCoordinates(ev, canvas)
+
+            for (const note of notes) {
+            if (isInBounding(adjustedPosition, note.getBoundingBox())) {
+                toggleNoteColor(note);
+                break; // stop after the first matching note
+                }
+            }
+            });
+    
+          // note: StemmableNote
+          function toggleNoteColor(note){
+            if (note.hasClass(&#39;selected&#39;)) {
+                note.setStyle({ fillStyle: &#39;black&#39;, strokeStyle: &#39;black&#39; });
+                note.drawWithStyle();
+                note.removeClass(&#39;selected&#39;)
+                return
+            } 
+            note.setStyle({ fillStyle: &#39;red&#39;, strokeStyle: &#39;red&#39; });
+            note.drawWithStyle();
+            note.addClass(&#39;selected&#39;)
+            }
+            // helper to see if click event is in a given bounding box
+            // pos: MousePosition, box: BoundingBox
+            function isInBounding(pos, box) {
+                const startingX = box.getX();
+                const startingY = box.getY();
+                const endX = startingX + box.getW();
+                const endY = startingY + box.getH();
+
+                const isWithinX = pos.x &gt;= startingX &amp;&amp; pos.x &lt;= endX;
+                const isWithinY = pos.y &gt;= startingY &amp;&amp; pos.y &lt;= endY;
+
+                return isWithinX &amp;&amp; isWithinY;
+            }
+
+            // helper to adjust coordinates from client space to canvas space
+            // ev: mouse event, element: HTMLElement
+            function adjustCoordinates(ev, element) {
+                const rect = element.getBoundingClientRect();
+                return { x: ev.clientX - rect.left, y: ev.clientY - rect.top };
+            }
+        });
+        &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+
+        
+        <div class="overlay" id="overlay"></div>
+    
+    <script>
+        const toggleButton = document.getElementById('open-sidebar-button');
+        const overlay = document.getElementById('overlay');
+        const themeSelector = document.getElementById('theme-select')
+
+        toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('nav-open');
+        });    
+
+        overlay.addEventListener('click', () => {
+        document.body.classList.remove('nav-open');
+        });
+        
+        // themeSelector.addEventListener('click', () => {
+        //     console.log("pressed")
+        //     if (document.documentElement.getAttribute('data-theme') == 'light'){
+        //         document.documentElement.setAttribute('data-theme', 'dark')
+        //     }
+        //     else {
+        //         document.documentElement.setAttribute('data-theme', 'light')
+        //     }
+        // })
+
+    </script>
+    <script>
+        // works pretty well, on page resize could be reran when different toc is shown
+document.addEventListener("DOMContentLoaded", () => {
+  const allTOCLinks = document.querySelectorAll(".toc a");
+  const headings = Array.from(allTOCLinks)
+    .map(link => document.querySelector(decodeURIComponent(link.getAttribute("href"))))
+    .filter(Boolean);
+
+  const isVisible = el => !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute("id");
+
+        // Remove active from all visible TOCs
+        allTOCLinks.forEach(link => {
+          if (isVisible(link)) link.classList.remove("active");
+        });
+
+        // Add active to visible link matching this heading
+        const matchingLinks = Array.from(document.querySelectorAll(`.toc a[href="#${id}"]`));
+        matchingLinks.forEach(link => {
+          if (isVisible(link)) link.classList.add("active");
+        });
+      }
+    });
+  }, {
+    // rootMargin: "-50% 0% -40% 0%",
+    threshold: 0.1
+  });
+
+  headings.forEach(h => observer.observe(h));
+});
+      </script>   
+      
+      <script>
+          hljs.highlightAll();
+      </script>
+    
+
