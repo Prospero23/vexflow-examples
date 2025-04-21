@@ -9,10 +9,13 @@
 
     <link rel="stylesheet" href="/vexflow-examples/css/theme.css">
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github.min.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github-dark-dimmed.min.css" media="(prefers-color-scheme: dark)">
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
   
-    <title>textbracket</title>
+  <!-- allow extra tags in the head -->
+  
+  <title>textbracket</title>
 </head>
 <body>
     <div class="container">
@@ -286,10 +289,11 @@
       
 
         <main class="main-content">
+          <div class="content">
             <button id="open-sidebar-button">
-                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"></path></svg>
-            </button>
-            
+              <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"></path></svg>
+          </button>
+          
 <h1 id="textbracket" tabindex="-1"><a class="header-anchor" href="#textbracket">Textbracket</a></h1>
 
 
@@ -314,11 +318,11 @@
     VexFlow.loadFonts(&#39;Bravura&#39;, &#39;Academico&#39;).then(() =&gt; {
       VexFlow.setFonts(&#39;Bravura&#39;, &#39;Academico&#39;);
       const { Factory, Dot } = VexFlow;
-      const vf = new Factory({
+      const factory = new Factory({
         renderer: { elementId: &#39;output&#39;, width: 500, height: 200 },
       });
 
-      const system = vf.System({ width: 400 });
+      const system = factory.System({ width: 400 });
 
       function dotted(staveNote, noteIndex = -1) {
         if (noteIndex &lt; 0) {
@@ -334,30 +338,30 @@
       }
 
       const notes = [
-        dotted(vf.StaveNote({
+        dotted(factory.StaveNote({
           keys: [&#39;e##/5&#39;],
           duration: &#39;8d&#39;,
-        }).addModifier(vf.Accidental({ type: &#39;##&#39; }))),
+        }).addModifier(factory.Accidental({ type: &#39;##&#39; }))),
 
-        vf.StaveNote({
+        factory.StaveNote({
           keys: [&#39;eb/5&#39;],
           duration: &#39;16&#39;,
-        }).addModifier(vf.Accidental({ type: &#39;b&#39; })),
+        }).addModifier(factory.Accidental({ type: &#39;b&#39; })),
 
-        dotted(vf.StaveNote({
+        dotted(factory.StaveNote({
           keys: [&#39;eb/4&#39;, &#39;d/5&#39;],
           duration: &#39;h&#39;,
         }), 0 /* add dot to note at index==0 */),
 
-        dotted(vf.StaveNote({
+        dotted(factory.StaveNote({
           keys: [&#39;c/5&#39;, &#39;eb/5&#39;, &#39;g#/5&#39;],
           duration: &#39;q&#39;,
         })
-          .addModifier(vf.Accidental({ type: &#39;b&#39; }), 1)
-          .addModifier(vf.Accidental({ type: &#39;#&#39; }), 2)),
+          .addModifier(factory.Accidental({ type: &#39;b&#39; }), 1)
+          .addModifier(factory.Accidental({ type: &#39;#&#39; }), 2)),
       ];
 
-      vf.TextBracket({
+      factory.TextBracket({
         from: notes[0],
         to: notes[2],
         text: &#39;8&#39;,
@@ -368,7 +372,7 @@
         },
       });
 
-      const voice = vf.Voice().addTickables(notes);
+      const voice = factory.Voice().addTickables(notes);
 
       system
         .addStave({
@@ -377,11 +381,12 @@
         .addClef(&#39;treble&#39;)
         .addTimeSignature(&#39;4/4&#39;);
 
-      vf.draw();
+      factory.draw();
     });
     &lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;
+
 " title="textbracket.html"></iframe>
 
 <form action="https://jsfiddle.net/api/post/library/pure/" method="post" target="_blank">
@@ -404,11 +409,11 @@
     VexFlow.loadFonts('Bravura', 'Academico').then(() => {
       VexFlow.setFonts('Bravura', 'Academico');
       const { Factory, Dot } = VexFlow;
-      const vf = new Factory({
+      const factory = new Factory({
         renderer: { elementId: 'output', width: 500, height: 200 },
       });
 
-      const system = vf.System({ width: 400 });
+      const system = factory.System({ width: 400 });
 
       function dotted(staveNote, noteIndex = -1) {
         if (noteIndex < 0) {
@@ -424,30 +429,30 @@
       }
 
       const notes = [
-        dotted(vf.StaveNote({
+        dotted(factory.StaveNote({
           keys: ['e##/5'],
           duration: '8d',
-        }).addModifier(vf.Accidental({ type: '##' }))),
+        }).addModifier(factory.Accidental({ type: '##' }))),
 
-        vf.StaveNote({
+        factory.StaveNote({
           keys: ['eb/5'],
           duration: '16',
-        }).addModifier(vf.Accidental({ type: 'b' })),
+        }).addModifier(factory.Accidental({ type: 'b' })),
 
-        dotted(vf.StaveNote({
+        dotted(factory.StaveNote({
           keys: ['eb/4', 'd/5'],
           duration: 'h',
         }), 0 /* add dot to note at index==0 */),
 
-        dotted(vf.StaveNote({
+        dotted(factory.StaveNote({
           keys: ['c/5', 'eb/5', 'g#/5'],
           duration: 'q',
         })
-          .addModifier(vf.Accidental({ type: 'b' }), 1)
-          .addModifier(vf.Accidental({ type: '#' }), 2)),
+          .addModifier(factory.Accidental({ type: 'b' }), 1)
+          .addModifier(factory.Accidental({ type: '#' }), 2)),
       ];
 
-      vf.TextBracket({
+      factory.TextBracket({
         from: notes[0],
         to: notes[2],
         text: '8',
@@ -458,7 +463,7 @@
         },
       });
 
-      const voice = vf.Voice().addTickables(notes);
+      const voice = factory.Voice().addTickables(notes);
 
       system
         .addStave({
@@ -467,11 +472,12 @@
         .addClef('treble')
         .addTimeSignature('4/4');
 
-      vf.draw();
+      factory.draw();
     });
     </script>
   </body>
 </html>
+
 </textarea><br>
   <input type="submit" value="Edit in JSFiddle">
 </form>
@@ -496,11 +502,11 @@
     VexFlow.loadFonts(&#39;Bravura&#39;, &#39;Academico&#39;).then(() =&gt; {
       VexFlow.setFonts(&#39;Bravura&#39;, &#39;Academico&#39;);
       const { Factory, Dot } = VexFlow;
-      const vf = new Factory({
+      const factory = new Factory({
         renderer: { elementId: &#39;output&#39;, width: 500, height: 200 },
       });
 
-      const system = vf.System({ width: 400 });
+      const system = factory.System({ width: 400 });
 
       function dotted(staveNote, noteIndex = -1) {
         if (noteIndex &lt; 0) {
@@ -516,30 +522,30 @@
       }
 
       const notes = [
-        dotted(vf.StaveNote({
+        dotted(factory.StaveNote({
           keys: [&#39;e##/5&#39;],
           duration: &#39;8d&#39;,
-        }).addModifier(vf.Accidental({ type: &#39;##&#39; }))),
+        }).addModifier(factory.Accidental({ type: &#39;##&#39; }))),
 
-        vf.StaveNote({
+        factory.StaveNote({
           keys: [&#39;eb/5&#39;],
           duration: &#39;16&#39;,
-        }).addModifier(vf.Accidental({ type: &#39;b&#39; })),
+        }).addModifier(factory.Accidental({ type: &#39;b&#39; })),
 
-        dotted(vf.StaveNote({
+        dotted(factory.StaveNote({
           keys: [&#39;eb/4&#39;, &#39;d/5&#39;],
           duration: &#39;h&#39;,
         }), 0 /* add dot to note at index==0 */),
 
-        dotted(vf.StaveNote({
+        dotted(factory.StaveNote({
           keys: [&#39;c/5&#39;, &#39;eb/5&#39;, &#39;g#/5&#39;],
           duration: &#39;q&#39;,
         })
-          .addModifier(vf.Accidental({ type: &#39;b&#39; }), 1)
-          .addModifier(vf.Accidental({ type: &#39;#&#39; }), 2)),
+          .addModifier(factory.Accidental({ type: &#39;b&#39; }), 1)
+          .addModifier(factory.Accidental({ type: &#39;#&#39; }), 2)),
       ];
 
-      vf.TextBracket({
+      factory.TextBracket({
         from: notes[0],
         to: notes[2],
         text: &#39;8&#39;,
@@ -550,7 +556,7 @@
         },
       });
 
-      const voice = vf.Voice().addTickables(notes);
+      const voice = factory.Voice().addTickables(notes);
 
       system
         .addStave({
@@ -559,14 +565,16 @@
         .addClef(&#39;treble&#39;)
         .addTimeSignature(&#39;4/4&#39;);
 
-      vf.draw();
+      factory.draw();
     });
     &lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 
+
 </code></pre>
 
+          </div>
         </main>
         <div class="overlay" id="overlay"></div>
     </div>

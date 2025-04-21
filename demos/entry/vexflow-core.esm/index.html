@@ -9,7 +9,9 @@
 
     <link rel="stylesheet" href="/vexflow-examples/css/theme.css">
     
-    <title>vexflow-core.esm.js</title>
+  <!-- allow extra tags in the head -->
+  
+  <title>vexflow-core.esm.js</title>
 </head>
 <body>
     <div class="container">
@@ -283,10 +285,11 @@
       
 
         <main class="main-content">
+          <div class="content">
             <button id="open-sidebar-button">
-                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"></path></svg>
-            </button>
-            <h1>vexflow-core.esm.js</h1>
+              <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"></path></svg>
+          </button>
+          <h1>vexflow-core.esm.js</h1>
 <p>To test the ESM entry point, you need load this page from a web server (e.g., <code>npx http-server</code> or just in the browser).</p>
 <p><a href="https://cdn.jsdelivr.net/npm/vexflow@5.0.0/build/esm/entry/vexflow-core.js">Click here to view the vexflow-core.js ESM file</a>.</p>
 <p>
@@ -308,12 +311,12 @@
   VexFlow.setFonts('Petaluma', 'Petaluma Script');
   console.log(VexFlow.getFonts());
 
-  const vf = new VexFlow.Factory({
+  const factory = new VexFlow.Factory({
     renderer: { elementId: 'output', width: 300, height: 180 },
   });
 
-  const score = vf.EasyScore();
-  const system = vf.System();
+  const score = factory.EasyScore();
+  const system = factory.System();
 
   system
     .addStave({
@@ -325,8 +328,9 @@
     .addClef('treble')
     .addTimeSignature('4/4');
 
-  vf.draw();
+  factory.draw();
 </script>
+          </div>
         </main>
         <div class="overlay" id="overlay"></div>
     </div>

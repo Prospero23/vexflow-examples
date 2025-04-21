@@ -9,10 +9,19 @@
 
     <link rel="stylesheet" href="/vexflow-examples/css/theme.css">
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github.min.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github-dark-dimmed.min.css" media="(prefers-color-scheme: dark)">
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
   
-    <title>vexflow-debug-with-tests.js</title>
+  <!-- allow extra tags in the head -->
+  
+    
+      <!-- Load Library -->
+    
+      <script src="https://cdn.jsdelivr.net/npm/vexflow@5.0.0/build/cjs/vexflow-debug-with-tests.js"></script>
+    
+  
+  <title>vexflow-debug-with-tests.js</title>
 </head>
 <body>
     <div class="container">
@@ -286,13 +295,11 @@
       
 
         <main class="main-content">
+          <div class="content">
             <button id="open-sidebar-button">
-                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"></path></svg>
-            </button>
-            <!-- Load Library -->
-<script src="https://cdn.jsdelivr.net/npm/vexflow@5.0.0/build/cjs/vexflow-debug-with-tests.js"></script>
-    
-<h1>vexflow-debug-with-tests.js</h1>
+              <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"></path></svg>
+          </button>
+          <h1>vexflow-debug-with-tests.js</h1>
 <p>
   This page loads the <code>vexflow-debug-with-tests.js</code> build, which is the non-minified version of
   <code>vexflow.js</code>. This build bundles the Bravura, Petaluma, and Gonville music fonts. It also includes all
@@ -313,12 +320,12 @@
 <div id="output"></div>
     
 <script>
-  const sampleCode = `const vf = new VexFlow.Factory({
+  const sampleCode = `const factory = new VexFlow.Factory({
 renderer: { elementId: 'output', width: 300, height: 180 },
 });
 
-const score = vf.EasyScore();
-const system = vf.System();
+const score = factory.EasyScore();
+const system = factory.System();
 
 system
 .addStave({
@@ -330,7 +337,7 @@ voices: [
 .addClef('treble')
 .addTimeSignature('4/4');
 
-vf.draw();`;
+factory.draw();`;
   document.getElementById('code').textContent = sampleCode;
 
   function copyCode() {
@@ -343,6 +350,7 @@ vf.draw();`;
 </script>
 
 
+          </div>
         </main>
         <div class="overlay" id="overlay"></div>
     </div>
