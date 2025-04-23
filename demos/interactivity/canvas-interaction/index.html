@@ -296,6 +296,7 @@
           </button>
           
 <h1 id="canvas-interactions" tabindex="-1"><a class="header-anchor" href="#canvas-interactions">canvas interactions</a></h1>
+<p>click notes to see interactions!</p>
 
 
 
@@ -465,8 +466,10 @@
   <input type="submit" value="Edit in JSFiddle">
 
 
-<pre><code class="language-javascript">
-
+<div class="code-block">
+  <button id="copy-btn">copy</button>
+  <pre><code id="example-code" class="language-javascript">
+    
 &lt;html&gt;
   &lt;head&gt;
     &lt;!-- IMPORTANT: Set the character set to UTF-8. Otherwise you may get weird symbols on the score. --&gt;
@@ -546,8 +549,20 @@
 &lt;/html&gt;
 
 
-</code></pre>
+  </code></pre>
+</div>
 
+<script>
+  let button = document.getElementById("copy-btn")
+  let code = document.getElementById("example-code")
+
+  function onClick(){
+    navigator.clipboard.writeText(code.innerText)
+    button.innerText = "copied!"
+    setTimeout(()=> button.innerText = "copy", 1000)
+}
+  button.addEventListener("click", ()=> onClick())
+</script>
           
         
         <div class="overlay" id="overlay"></div>
