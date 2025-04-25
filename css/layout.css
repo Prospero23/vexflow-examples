@@ -10,7 +10,14 @@
 .main-content{
     width: 100%;
     height: 100%;
-    padding: 4rem;
+    padding: 2rem;
+}
+
+/* inner wrapper: constrains lines, centers content */
+.content-wrapper {
+    max-width: var(--content-max-width, 75ch);
+    margin: 0 auto; /* centers content */
+    width: 100%;
 }
 
 /* hide container by default on mobile */
@@ -106,7 +113,7 @@ body.nav-open .nav-container {
 }
 
 /* On mobile, place button to open nav on the top right */
-#open-sidebar-button {
+#open-sidebar-btn {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -127,10 +134,10 @@ body.nav-open #overlay {
 }
 
 /* for button that copies code in html/node-example layouts */
-#copy-btn {
+.copy-btn {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
+    top: 0.5em;
+    right: 0.5em;
   
     /* hide visually and remove from hit‑testing */
     opacity: 0;
@@ -146,7 +153,7 @@ body.nav-open #overlay {
     position: relative;
 }
   
-.code-block:hover #copy-btn {
+.code-block:hover .copy-btn {
     opacity: 1;
     pointer-events: auto;
   
@@ -180,10 +187,11 @@ body.nav-open #overlay {
         width: auto;
         height: auto;
         padding-left: 2rem;
-        padding-right: 4rem;        
+        padding-right: 4rem;
+        min-width: 0; /* allows long <pre> to scroll correctly */
     }
 
-    #open-sidebar-button{
+    #open-sidebar-btn{
         display: none;
     }
 }

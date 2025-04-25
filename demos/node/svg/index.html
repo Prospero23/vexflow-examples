@@ -290,8 +290,8 @@
       
 
         <main class="main-content">
-          <div class="content">
-            <button id="open-sidebar-button" class="svg-button">
+          <section class="content-wrapper">
+            <button id="open-sidebar-btn" class="svg-btn svg-btn--lg">
               <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"></path></svg>
           </button>
           
@@ -300,9 +300,11 @@
 
 
 <div class="code-block">
-  <button id="copy-btn">copy</button>
-  <pre><code id="example-code" class="language-javascript">
-    
+    <button class="copy-btn svg-btn" type="button" aria-label="Copy code">
+    <svg fill="blue" viewBox="0 0 32 32" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M27.2,8.22H23.78V5.42A3.42,3.42,0,0,0,20.36,2H5.42A3.42,3.42,0,0,0,2,5.42V20.36a3.43,3.43,0,0,0,3.42,3.42h2.8V27.2A2.81,2.81,0,0,0,11,30H27.2A2.81,2.81,0,0,0,30,27.2V11A2.81,2.81,0,0,0,27.2,8.22ZM5.42,21.91a1.55,1.55,0,0,1-1.55-1.55V5.42A1.54,1.54,0,0,1,5.42,3.87H20.36a1.55,1.55,0,0,1,1.55,1.55v2.8H11A2.81,2.81,0,0,0,8.22,11V21.91ZM28.13,27.2a.93.93,0,0,1-.93.93H11a.93.93,0,0,1-.93-.93V11a.93.93,0,0,1,.93-.93H27.2a.93.93,0,0,1,.93.93Z"></path></g></svg>
+    </button>
+    <pre><code id="example-code" class="language-javascript">
+  
   // Summary: Create a SVG file using the VexFlow library.
 // Run:
 //   node svg.js &gt; output/svgcontext.svg
@@ -351,26 +353,14 @@ const svg = div.innerHTML.replace(&#39;&lt;svg &#39;, &#39;&lt;svg xmlns=&#34;ht
 console.log(svg);
 
 
-  </code></pre>
-</div>
-
-<script>
-  let button = document.getElementById("copy-btn")
-  let code = document.getElementById("example-code")
-
-  function onClick(){
-    navigator.clipboard.writeText(code.innerText)
-    button.innerText = "copied!"
-    setTimeout(()=> button.innerText = "copy", 1000)
-}
-  button.addEventListener("click", ()=> onClick())
-</script>
-          </div>
+</code></pre>
+  </div>
+          </section>
         </main>
         <div class="overlay" id="overlay"></div>
     </div>
     <script>
-        const toggleButton = document.getElementById('open-sidebar-button');
+        const toggleButton = document.getElementById('open-sidebar-btn');
         const overlay = document.getElementById('overlay');
         const themeSelector = document.getElementById('theme-select')
 
@@ -433,5 +423,23 @@ document.addEventListener("DOMContentLoaded", () => {
           hljs.highlightAll();
       </script>
     
+    <script>
+      document.addEventListener("click", (e) => {
+        // Only run on clicks of copy buttons
+        const btn = e.target.closest(".copy-btn");
+        if (!btn) return;
+
+        // Find the nearest code block wrapper
+        const block = e.target.closest(".code-block");
+        if (!block) return;
+
+        // Grab the code text (innerText so spans from highlighting are ignored)
+        const codeEl = block.querySelector("code");
+        const text   = codeEl.innerText;
+
+        // Copy it
+        navigator.clipboard.writeText(text);
+      });
+    </script>
 </body>
 </html>
