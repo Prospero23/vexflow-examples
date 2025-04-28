@@ -9,11 +9,7 @@
     <link rel="stylesheet" href="/vexflow-examples/css/layout.css">
     <link rel="stylesheet" href="/vexflow-examples/css/base.css">
 
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github.min.css" media="(prefers-color-scheme: light)">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github-dark-dimmed.min.css" media="(prefers-color-scheme: dark)">
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-  
+  <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" media="">
   <!-- allow extra tags in the head -->
   
   <title>SVG</title>
@@ -285,7 +281,6 @@
     </div>
   
 </div>
-
 </div>
       
 
@@ -301,62 +296,15 @@
 
 
 
-
-<div class="code-block">
+  <div class="code-demo">
+    
+    
+    <div class="code-block">
     <button class="copy-btn svg-btn" type="button" aria-label="Copy code">
     <svg fill="blue" viewBox="0 0 32 32" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M27.2,8.22H23.78V5.42A3.42,3.42,0,0,0,20.36,2H5.42A3.42,3.42,0,0,0,2,5.42V20.36a3.43,3.43,0,0,0,3.42,3.42h2.8V27.2A2.81,2.81,0,0,0,11,30H27.2A2.81,2.81,0,0,0,30,27.2V11A2.81,2.81,0,0,0,27.2,8.22ZM5.42,21.91a1.55,1.55,0,0,1-1.55-1.55V5.42A1.54,1.54,0,0,1,5.42,3.87H20.36a1.55,1.55,0,0,1,1.55,1.55v2.8H11A2.81,2.81,0,0,0,8.22,11V21.91ZM28.13,27.2a.93.93,0,0,1-.93.93H11a.93.93,0,0,1-.93-.93V11a.93.93,0,0,1,.93-.93H27.2a.93.93,0,0,1,.93.93Z"></path></g></svg>
     </button>
-    <pre><code id="example-code" class="language-js">
-  
-// Summary: Create a SVG file using the VexFlow library.
-// Run:
-//   node svg.js &gt; output/svgcontext.svg
-//
-// ### CURRENT LIMITATIONS ###
-// If you open the SVG file, you&#39;ll see: font-family=&#34;Bravura,Academico&#34;
-// If these fonts are not installed on your system, the glyphs will look like empty squares instead of music symbols.
-//
-// In V4, the VexFlow library contained the paths for every supported glyph, so we could save those paths into the SVG output.
-// This resulted in portable SVGs that could be viewed on any system.
-// This is a big drawback of the current V5 approach.
-//
-// TODO: Can we fix this with the help of opentype.js and a config option that tells the SVG context to render its paths?
-// We could cache the paths for each glyph, so we don&#39;t have to recompute them every time we render a particular element type.
-// Additionally, we could explore SVG &lt;use&gt; so we can define one template path and reuse it multiple times in one score.
-// See: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use
-
-const Vex = require(&#39;vexflow&#39;);
-const { JSDOM } = require(&#39;jsdom&#39;);
-
-const VF = VexFlow;
-
-const dom = new JSDOM(&#39;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body&gt;&lt;div id=&#34;vf&#34;&gt;&lt;/div&gt;&lt;body&gt;&lt;/html&gt;&#39;);
-
-global.document = dom.window.document;
-
-// Create an SVG renderer and attach it to the DIV element named &#34;vf&#34;.
-const div = document.getElementById(&#39;vf&#39;);
-const renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
-
-// Configure the rendering context.
-renderer.resize(500, 500);
-const context = renderer.getContext();
-
-// Create a stave of width 400 at position 10, 40 on the canvas.
-const stave = new VF.Stave(10, 40, 400);
-
-// Add a clef and time signature.
-stave.addClef(&#39;treble&#39;).addTimeSignature(&#39;4/4&#39;);
-
-// Connect it to the rendering context and draw!
-stave.setContext(context).drawWithStyle();
-
-const svg = div.innerHTML.replace(&#39;&lt;svg &#39;, &#39;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; &#39;);
-
-console.log(svg);
-
-
-</code></pre>
+    <pre><code class="language-js"><span class="token comment">// Summary: Create a SVG file using the VexFlow library.</span><br><span class="token comment">// Run:</span><br><span class="token comment">//   node svg.js > output/svgcontext.svg</span><br><span class="token comment">//</span><br><span class="token comment">// ### CURRENT LIMITATIONS ###</span><br><span class="token comment">// If you open the SVG file, you'll see: font-family="Bravura,Academico"</span><br><span class="token comment">// If these fonts are not installed on your system, the glyphs will look like empty squares instead of music symbols.</span><br><span class="token comment">//</span><br><span class="token comment">// In V4, the VexFlow library contained the paths for every supported glyph, so we could save those paths into the SVG output.</span><br><span class="token comment">// This resulted in portable SVGs that could be viewed on any system.</span><br><span class="token comment">// This is a big drawback of the current V5 approach.</span><br><span class="token comment">//</span><br><span class="token comment">// TODO: Can we fix this with the help of opentype.js and a config option that tells the SVG context to render its paths?</span><br><span class="token comment">// We could cache the paths for each glyph, so we don't have to recompute them every time we render a particular element type.</span><br><span class="token comment">// Additionally, we could explore SVG &lt;use> so we can define one template path and reuse it multiple times in one score.</span><br><span class="token comment">// See: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use</span><br><br><span class="token keyword">const</span> Vex <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'vexflow'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token constant">JSDOM</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'jsdom'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> <span class="token constant">VF</span> <span class="token operator">=</span> VexFlow<span class="token punctuation">;</span><br><br><span class="token keyword">const</span> dom <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JSDOM</span><span class="token punctuation">(</span><span class="token string">'&lt;!DOCTYPE html>&lt;html>&lt;body>&lt;div id="vf">&lt;/div>&lt;body>&lt;/html>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>global<span class="token punctuation">.</span>document <span class="token operator">=</span> dom<span class="token punctuation">.</span>window<span class="token punctuation">.</span>document<span class="token punctuation">;</span><br><br><span class="token comment">// Create an SVG renderer and attach it to the DIV element named "vf".</span><br><span class="token keyword">const</span> div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'vf'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">const</span> renderer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VF<span class="token punctuation">.</span>Renderer</span><span class="token punctuation">(</span>div<span class="token punctuation">,</span> <span class="token constant">VF</span><span class="token punctuation">.</span>Renderer<span class="token punctuation">.</span>Backends<span class="token punctuation">.</span><span class="token constant">SVG</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">// Configure the rendering context.</span><br>renderer<span class="token punctuation">.</span><span class="token function">resize</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">const</span> context <span class="token operator">=</span> renderer<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">// Create a stave of width 400 at position 10, 40 on the canvas.</span><br><span class="token keyword">const</span> stave <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VF<span class="token punctuation">.</span>Stave</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">// Add a clef and time signature.</span><br>stave<span class="token punctuation">.</span><span class="token function">addClef</span><span class="token punctuation">(</span><span class="token string">'treble'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addTimeSignature</span><span class="token punctuation">(</span><span class="token string">'4/4'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">// Connect it to the rendering context and draw!</span><br>stave<span class="token punctuation">.</span><span class="token function">setContext</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">drawWithStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> svg <span class="token operator">=</span> div<span class="token punctuation">.</span>innerHTML<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'&lt;svg '</span><span class="token punctuation">,</span> <span class="token string">'&lt;svg xmlns="http://www.w3.org/2000/svg" '</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>svg<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+  </div>
   </div>
           </section>
         </main>
@@ -421,11 +369,6 @@ document.addEventListener("DOMContentLoaded", () => {
   headings.forEach(h => observer.observe(h));
 });
       </script>   
-      
-      <script>
-          hljs.highlightAll();
-      </script>
-    
     <script>
       document.addEventListener("click", (e) => {
         // Only run on clicks of copy buttons
@@ -444,5 +387,25 @@ document.addEventListener("DOMContentLoaded", () => {
         navigator.clipboard.writeText(text);
       });
     </script>
+        <script>
+          document.addEventListener("click", (e) => {
+            // Only run on clicks of copy buttons
+            const btn = e.target.closest(".run-btn");
+            if (!btn) return;
+    
+            // Find the nearest code block wrapper
+            const block = e.target.closest(".code-demo");
+            if (!block) return;
+    
+            // Grab the code text (innerText so spans from highlighting are ignored)
+            const codeEl = block.querySelector("code");
+            const text   = codeEl.innerText;
+            eval(`"use strict";\n${text}`);
+    
+            // Copy it
+            navigator.clipboard.writeText(text);
+          });
+        </script>
+    
 </body>
 </html>

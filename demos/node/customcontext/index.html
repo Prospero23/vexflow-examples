@@ -9,11 +9,7 @@
     <link rel="stylesheet" href="/vexflow-examples/css/layout.css">
     <link rel="stylesheet" href="/vexflow-examples/css/base.css">
 
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github.min.css" media="(prefers-color-scheme: light)">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github-dark-dimmed.min.css" media="(prefers-color-scheme: dark)">
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-  
+  <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" media="">
   <!-- allow extra tags in the head -->
   
   <title>customcontext</title>
@@ -285,7 +281,6 @@
     </div>
   
 </div>
-
 </div>
       
 
@@ -301,213 +296,15 @@
 
 
 
-
-<div class="code-block">
+  <div class="code-demo">
+    
+    
+    <div class="code-block">
     <button class="copy-btn svg-btn" type="button" aria-label="Copy code">
     <svg fill="blue" viewBox="0 0 32 32" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M27.2,8.22H23.78V5.42A3.42,3.42,0,0,0,20.36,2H5.42A3.42,3.42,0,0,0,2,5.42V20.36a3.43,3.43,0,0,0,3.42,3.42h2.8V27.2A2.81,2.81,0,0,0,11,30H27.2A2.81,2.81,0,0,0,30,27.2V11A2.81,2.81,0,0,0,27.2,8.22ZM5.42,21.91a1.55,1.55,0,0,1-1.55-1.55V5.42A1.54,1.54,0,0,1,5.42,3.87H20.36a1.55,1.55,0,0,1,1.55,1.55v2.8H11A2.81,2.81,0,0,0,8.22,11V21.91ZM28.13,27.2a.93.93,0,0,1-.93.93H11a.93.93,0,0,1-.93-.93V11a.93.93,0,0,1,.93-.93H27.2a.93.93,0,0,1,.93.93Z"></path></g></svg>
     </button>
-    <pre><code id="example-code" class="language-js">
-  
-// Summary: A custom VexFlow.RenderContext implementation.
-//   This is a stub for demonstration purposes. It prints method calls and arguments via console.log().
-// Run:
-//   node customcontext.js
-
-const Vex = require(&#39;vexflow&#39;);
-const { createCanvas } = require(&#39;canvas&#39;);
-
-const VF = VexFlow;
-
-// In VexFlow 4, this demo worked fine without the line of code below.
-// VexFlow 5 requires a hidden canvas for measuring font glyphs.
-// Call VexFlow.Element.setTextMeasurementCanvas(...) with an object that conforms to the Canvas API.
-// Here, we use node-canvas.
-VF.Element.setTextMeasurementCanvas(createCanvas(300, 150));
-
-class CustomContext extends VF.RenderContext {
-  constructor() {
-    super();
-    this.fillStyle = &#39;&#39;;
-    this.strokeStyle = &#39;&#39;;
-  }
-
-  log(func, ...args) {
-    for (let i = 0; i &lt; args.length; ++i) {
-      if (typeof args[i] == &#39;string&#39;) {
-        args[i] = `&#34;${args[i]}&#34;`;
-      }
-    }
-    console.log(`${func}(${args.join(&#39;, &#39;)})`);
-  }
-
-  clear() {
-    this.log(&#39;clear&#39;);
-  }
-
-  setFont(f, sz, wt, st) {
-    this.log(&#39;setFont&#39;, f, sz, wt, st);
-    return this;
-  }
-
-  getFont() {
-    this.log(`getFont() =&gt; &#39;10pt Arial&#39;`);
-    return &#39;10pt Arial&#39;;
-  }
-
-  setFillStyle(style) {
-    this.log(&#39;setFillStyle&#39;, style);
-    return this;
-  }
-
-  setBackgroundFillStyle(style) {
-    this.log(&#39;setBackgroundFillStyle&#39;, style);
-    return this;
-  }
-
-  setStrokeStyle(style) {
-    this.log(&#39;setStrokeStyle&#39;, style);
-    return this;
-  }
-
-  setShadowColor(color) {
-    this.log(&#39;setShadowColor&#39;, color);
-    return this;
-  }
-
-  setShadowBlur(blur) {
-    this.log(&#39;setShadowBlur&#39;, blur);
-    return this;
-  }
-
-  setLineWidth(width) {
-    this.log(&#39;setLineWidth&#39;, width);
-    return this;
-  }
-
-  setLineCap(capType) {
-    this.log(&#39;setLineCap&#39;, capType);
-    return this;
-  }
-
-  setLineDash(dashPattern) {
-    this.log(&#39;setLineDash&#39;, `[${dashPattern.join(&#39;, &#39;)}]`);
-    return this;
-  }
-
-  scale(x, y) {
-    this.log(&#39;scale&#39;, x, y);
-    return this;
-  }
-
-  rect(x, y, width, height) {
-    this.log(&#39;rect&#39;, x, y, width, height);
-    return this;
-  }
-
-  resize(width, height) {
-    this.log(&#39;resize&#39;, width, height);
-    return this;
-  }
-
-  fillRect(x, y, width, height) {
-    this.log(&#39;fillRect&#39;, x, y, width, height);
-    return this;
-  }
-
-  clearRect(x, y, width, height) {
-    this.log(&#39;clearRect&#39;, x, y, width, height);
-    return this;
-  }
-
-  beginPath() {
-    this.log(&#39;beginPath&#39;);
-    return this;
-  }
-
-  moveTo(x, y) {
-    this.log(&#39;moveTo&#39;, x, y);
-    return this;
-  }
-
-  lineTo(x, y) {
-    this.log(&#39;lineTo&#39;, x, y);
-    return this;
-  }
-
-  bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y) {
-    this.log(&#39;bezierCurveTo&#39;, cp1x, cp1y, cp2x, cp2y, x, y);
-    return this;
-  }
-
-  quadraticCurveTo(cpx, cpy, x, y) {
-    this.log(&#39;quadraticCurveTo&#39;, cpx, cpy, x, y);
-    return this;
-  }
-
-  arc(x, y, radius, startAngle, endAngle, antiClockwise) {
-    this.log(&#39;arc&#39;, x, y, radius, startAngle, endAngle, antiClockwise);
-    return this;
-  }
-
-  fill(attributes) {
-    this.log(&#39;fill&#39;);
-    return this;
-  }
-
-  stroke() {
-    this.log(&#39;stroke&#39;);
-    return this;
-  }
-
-  closePath() {
-    this.log(&#39;closePath&#39;);
-    return this;
-  }
-
-  fillText(text, x, y) {
-    this.log(&#39;fillText&#39;, text, x, y);
-    return this;
-  }
-
-  save() {
-    this.log(&#39;save&#39;);
-    return this;
-  }
-
-  restore() {
-    this.log(&#39;restore&#39;);
-    return this;
-  }
-
-  openGroup(cls, id, attrs) {
-    this.log(&#39;openGroup&#39;, cls, id);
-  }
-
-  closeGroup() {
-    this.log(&#39;closeGroup&#39;);
-  }
-
-  add(child) {
-    this.log(&#39;add&#39;);
-  }
-
-  measureText(text) {
-    this.log(&#39;measureText&#39;, text);
-    return { width: 0, height: 10 };
-  }
-}
-
-const renderer = new VF.Renderer(new CustomContext());
-const context = renderer.getContext();
-context.setFont(&#39;Arial&#39;, 10).setBackgroundFillStyle(&#39;#eed&#39;);
-
-const stave = new VF.Stave(10, 40, 400);
-stave.addClef(&#39;treble&#39;);
-stave.addTimeSignature(&#39;4/4&#39;);
-stave.setContext(context).drawWithStyle();
-
-
-</code></pre>
+    <pre><code class="language-js"><span class="token comment">// Summary: A custom VexFlow.RenderContext implementation.</span><br><span class="token comment">//   This is a stub for demonstration purposes. It prints method calls and arguments via console.log().</span><br><span class="token comment">// Run:</span><br><span class="token comment">//   node customcontext.js</span><br><br><span class="token keyword">const</span> Vex <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'vexflow'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">const</span> <span class="token punctuation">{</span> createCanvas <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'canvas'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> <span class="token constant">VF</span> <span class="token operator">=</span> VexFlow<span class="token punctuation">;</span><br><br><span class="token comment">// In VexFlow 4, this demo worked fine without the line of code below.</span><br><span class="token comment">// VexFlow 5 requires a hidden canvas for measuring font glyphs.</span><br><span class="token comment">// Call VexFlow.Element.setTextMeasurementCanvas(...) with an object that conforms to the Canvas API.</span><br><span class="token comment">// Here, we use node-canvas.</span><br><span class="token constant">VF</span><span class="token punctuation">.</span>Element<span class="token punctuation">.</span><span class="token function">setTextMeasurementCanvas</span><span class="token punctuation">(</span><span class="token function">createCanvas</span><span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">150</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">class</span> <span class="token class-name">CustomContext</span> <span class="token keyword">extends</span> <span class="token class-name">VF<span class="token punctuation">.</span>RenderContext</span> <span class="token punctuation">{</span><br>  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span>strokeStyle <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">log</span><span class="token punctuation">(</span><span class="token parameter">func<span class="token punctuation">,</span> <span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> args<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> args<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'string'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        args<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">"</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>args<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">"</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>func<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>args<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">', '</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">)</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'clear'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">setFont</span><span class="token punctuation">(</span><span class="token parameter">f<span class="token punctuation">,</span> sz<span class="token punctuation">,</span> wt<span class="token punctuation">,</span> st</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'setFont'</span><span class="token punctuation">,</span> f<span class="token punctuation">,</span> sz<span class="token punctuation">,</span> wt<span class="token punctuation">,</span> st<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">getFont</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">getFont() => '10pt Arial'</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token string">'10pt Arial'</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">setFillStyle</span><span class="token punctuation">(</span><span class="token parameter">style</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'setFillStyle'</span><span class="token punctuation">,</span> style<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">setBackgroundFillStyle</span><span class="token punctuation">(</span><span class="token parameter">style</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'setBackgroundFillStyle'</span><span class="token punctuation">,</span> style<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">setStrokeStyle</span><span class="token punctuation">(</span><span class="token parameter">style</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'setStrokeStyle'</span><span class="token punctuation">,</span> style<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">setShadowColor</span><span class="token punctuation">(</span><span class="token parameter">color</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'setShadowColor'</span><span class="token punctuation">,</span> color<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">setShadowBlur</span><span class="token punctuation">(</span><span class="token parameter">blur</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'setShadowBlur'</span><span class="token punctuation">,</span> blur<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">setLineWidth</span><span class="token punctuation">(</span><span class="token parameter">width</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'setLineWidth'</span><span class="token punctuation">,</span> width<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">setLineCap</span><span class="token punctuation">(</span><span class="token parameter">capType</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'setLineCap'</span><span class="token punctuation">,</span> capType<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">setLineDash</span><span class="token punctuation">(</span><span class="token parameter">dashPattern</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'setLineDash'</span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">[</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>dashPattern<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">', '</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">]</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">scale</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'scale'</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">rect</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'rect'</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">resize</span><span class="token punctuation">(</span><span class="token parameter">width<span class="token punctuation">,</span> height</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'resize'</span><span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">fillRect</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'fillRect'</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">clearRect</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'clearRect'</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">beginPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'beginPath'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">moveTo</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'moveTo'</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">lineTo</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'lineTo'</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">bezierCurveTo</span><span class="token punctuation">(</span><span class="token parameter">cp1x<span class="token punctuation">,</span> cp1y<span class="token punctuation">,</span> cp2x<span class="token punctuation">,</span> cp2y<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'bezierCurveTo'</span><span class="token punctuation">,</span> cp1x<span class="token punctuation">,</span> cp1y<span class="token punctuation">,</span> cp2x<span class="token punctuation">,</span> cp2y<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">quadraticCurveTo</span><span class="token punctuation">(</span><span class="token parameter">cpx<span class="token punctuation">,</span> cpy<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'quadraticCurveTo'</span><span class="token punctuation">,</span> cpx<span class="token punctuation">,</span> cpy<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">arc</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> radius<span class="token punctuation">,</span> startAngle<span class="token punctuation">,</span> endAngle<span class="token punctuation">,</span> antiClockwise</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'arc'</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> radius<span class="token punctuation">,</span> startAngle<span class="token punctuation">,</span> endAngle<span class="token punctuation">,</span> antiClockwise<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">fill</span><span class="token punctuation">(</span><span class="token parameter">attributes</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'fill'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">stroke</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'stroke'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">closePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'closePath'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">fillText</span><span class="token punctuation">(</span><span class="token parameter">text<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'fillText'</span><span class="token punctuation">,</span> text<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'save'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">restore</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'restore'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">openGroup</span><span class="token punctuation">(</span><span class="token parameter">cls<span class="token punctuation">,</span> id<span class="token punctuation">,</span> attrs</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'openGroup'</span><span class="token punctuation">,</span> cls<span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">closeGroup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'closeGroup'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">child</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'add'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">measureText</span><span class="token punctuation">(</span><span class="token parameter">text</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'measureText'</span><span class="token punctuation">,</span> text<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token number">10</span> <span class="token punctuation">}</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">const</span> renderer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VF<span class="token punctuation">.</span>Renderer</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CustomContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">const</span> context <span class="token operator">=</span> renderer<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>context<span class="token punctuation">.</span><span class="token function">setFont</span><span class="token punctuation">(</span><span class="token string">'Arial'</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBackgroundFillStyle</span><span class="token punctuation">(</span><span class="token string">'#eed'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> stave <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VF<span class="token punctuation">.</span>Stave</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>stave<span class="token punctuation">.</span><span class="token function">addClef</span><span class="token punctuation">(</span><span class="token string">'treble'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>stave<span class="token punctuation">.</span><span class="token function">addTimeSignature</span><span class="token punctuation">(</span><span class="token string">'4/4'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>stave<span class="token punctuation">.</span><span class="token function">setContext</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">drawWithStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+  </div>
   </div>
           </section>
         </main>
@@ -572,11 +369,6 @@ document.addEventListener("DOMContentLoaded", () => {
   headings.forEach(h => observer.observe(h));
 });
       </script>   
-      
-      <script>
-          hljs.highlightAll();
-      </script>
-    
     <script>
       document.addEventListener("click", (e) => {
         // Only run on clicks of copy buttons
@@ -595,5 +387,25 @@ document.addEventListener("DOMContentLoaded", () => {
         navigator.clipboard.writeText(text);
       });
     </script>
+        <script>
+          document.addEventListener("click", (e) => {
+            // Only run on clicks of copy buttons
+            const btn = e.target.closest(".run-btn");
+            if (!btn) return;
+    
+            // Find the nearest code block wrapper
+            const block = e.target.closest(".code-demo");
+            if (!block) return;
+    
+            // Grab the code text (innerText so spans from highlighting are ignored)
+            const codeEl = block.querySelector("code");
+            const text   = codeEl.innerText;
+            eval(`"use strict";\n${text}`);
+    
+            // Copy it
+            navigator.clipboard.writeText(text);
+          });
+        </script>
+    
 </body>
 </html>

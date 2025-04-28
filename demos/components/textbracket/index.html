@@ -9,11 +9,7 @@
     <link rel="stylesheet" href="/vexflow-examples/css/layout.css">
     <link rel="stylesheet" href="/vexflow-examples/css/base.css">
 
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github.min.css" media="(prefers-color-scheme: light)">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github-dark-dimmed.min.css" media="(prefers-color-scheme: dark)">
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-  
+  <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" media="">
   <!-- allow extra tags in the head -->
   
   <title>textbracket</title>
@@ -285,7 +281,6 @@
     </div>
   
 </div>
-
 </div>
       
 
@@ -301,19 +296,20 @@
 
 
 
-<iframe width="100%" height="250" srcdoc="
-&lt;!doctype html&gt;
+  <div class="code-demo">
+    
+    <iframe srcdoc="&lt;!doctype html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;!-- IMPORTANT: Set the character set to UTF-8. Otherwise you may get weird symbols on the score. --&gt;
-    &lt;meta charset=&#34;utf-8&#34; /&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;!-- Div where the scores will be output --&gt;
-    &lt;div id=&#34;output&#34;&gt;&lt;/div&gt;
+    &lt;div id=&quot;output&quot;&gt;&lt;/div&gt;
 
     &lt;!-- Load library --&gt;
-    &lt;script src=&#34;https://cdn.jsdelivr.net/npm/vexflow@5.0.0/build/cjs/vexflow-core.js&#34;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vexflow@5.0.0/build/cjs/vexflow-core.js&quot;&gt;&lt;/script&gt;
 
     &lt;script&gt;
     /* global VexFlow */
@@ -387,38 +383,34 @@
     });
     &lt;/script&gt;
   &lt;/body&gt;
-&lt;/html&gt;
+&lt;/html&gt;" style="width:100%;height:250px;border:1px solid #ddd" loading="lazy"></iframe>
+           <form action="https://jsfiddle.net/api/post/library/pure" method="post" target="_blank">
+            <textarea hidden="" name="html">&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;!-- IMPORTANT: Set the character set to UTF-8. Otherwise you may get weird symbols on the score. --&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- Div where the scores will be output --&gt;
+    &lt;div id=&quot;output&quot;&gt;&lt;/div&gt;
 
-" title="html-examples/textbracket.html"></iframe>
+    &lt;!-- Load library --&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vexflow@5.0.0/build/cjs/vexflow-core.js&quot;&gt;&lt;/script&gt;
 
-<form action="https://jsfiddle.net/api/post/library/pure/" method="post" target="_blank">
-  <textarea hidden="" name="html">
-<!doctype html>
-<html>
-  <head>
-    <!-- IMPORTANT: Set the character set to UTF-8. Otherwise you may get weird symbols on the score. -->
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <!-- Div where the scores will be output -->
-    <div id="output"></div>
-
-    <!-- Load library -->
-    <script src="https://cdn.jsdelivr.net/npm/vexflow@5.0.0/build/cjs/vexflow-core.js"></script>
-
-    <script>
+    &lt;script&gt;
     /* global VexFlow */
-    VexFlow.loadFonts('Bravura', 'Academico').then(() => {
-      VexFlow.setFonts('Bravura', 'Academico');
+    VexFlow.loadFonts(&#39;Bravura&#39;, &#39;Academico&#39;).then(() =&gt; {
+      VexFlow.setFonts(&#39;Bravura&#39;, &#39;Academico&#39;);
       const { Factory, Dot } = VexFlow;
       const factory = new Factory({
-        renderer: { elementId: 'output', width: 500, height: 200 },
+        renderer: { elementId: &#39;output&#39;, width: 500, height: 200 },
       });
 
       const system = factory.System({ width: 400 });
 
       function dotted(staveNote, noteIndex = -1) {
-        if (noteIndex < 0) {
+        if (noteIndex &lt; 0) {
           Dot.buildAndAttach([staveNote], {
             all: true,
           });
@@ -432,35 +424,35 @@
 
       const notes = [
         dotted(factory.StaveNote({
-          keys: ['e##/5'],
-          duration: '8d',
-        }).addModifier(factory.Accidental({ type: '##' }))),
+          keys: [&#39;e##/5&#39;],
+          duration: &#39;8d&#39;,
+        }).addModifier(factory.Accidental({ type: &#39;##&#39; }))),
 
         factory.StaveNote({
-          keys: ['eb/5'],
-          duration: '16',
-        }).addModifier(factory.Accidental({ type: 'b' })),
+          keys: [&#39;eb/5&#39;],
+          duration: &#39;16&#39;,
+        }).addModifier(factory.Accidental({ type: &#39;b&#39; })),
 
         dotted(factory.StaveNote({
-          keys: ['eb/4', 'd/5'],
-          duration: 'h',
+          keys: [&#39;eb/4&#39;, &#39;d/5&#39;],
+          duration: &#39;h&#39;,
         }), 0 /* add dot to note at index==0 */),
 
         dotted(factory.StaveNote({
-          keys: ['c/5', 'eb/5', 'g#/5'],
-          duration: 'q',
+          keys: [&#39;c/5&#39;, &#39;eb/5&#39;, &#39;g#/5&#39;],
+          duration: &#39;q&#39;,
         })
-          .addModifier(factory.Accidental({ type: 'b' }), 1)
-          .addModifier(factory.Accidental({ type: '#' }), 2)),
+          .addModifier(factory.Accidental({ type: &#39;b&#39; }), 1)
+          .addModifier(factory.Accidental({ type: &#39;#&#39; }), 2)),
       ];
 
       factory.TextBracket({
         from: notes[0],
         to: notes[2],
-        text: '8',
+        text: &#39;8&#39;,
         options: {
-          superscript: 'vb',
-          position: 'bottom',
+          superscript: &#39;vb&#39;,
+          position: &#39;bottom&#39;,
           line: 3,
         },
       });
@@ -471,115 +463,23 @@
         .addStave({
           voices: [voice],
         })
-        .addClef('treble')
-        .addTimeSignature('4/4');
+        .addClef(&#39;treble&#39;)
+        .addTimeSignature(&#39;4/4&#39;);
 
       factory.draw();
     });
-    </script>
-  </body>
-</html>
-
-</textarea><br>
-  <input type="submit" value="Edit in JSFiddle">
-</form>
-
-
-<div class="code-block">
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</textarea><br>
+            <input type="submit" value="Edit in JSFiddle">
+            </form>
+           
+    <div class="code-block">
     <button class="copy-btn svg-btn" type="button" aria-label="Copy code">
     <svg fill="blue" viewBox="0 0 32 32" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M27.2,8.22H23.78V5.42A3.42,3.42,0,0,0,20.36,2H5.42A3.42,3.42,0,0,0,2,5.42V20.36a3.43,3.43,0,0,0,3.42,3.42h2.8V27.2A2.81,2.81,0,0,0,11,30H27.2A2.81,2.81,0,0,0,30,27.2V11A2.81,2.81,0,0,0,27.2,8.22ZM5.42,21.91a1.55,1.55,0,0,1-1.55-1.55V5.42A1.54,1.54,0,0,1,5.42,3.87H20.36a1.55,1.55,0,0,1,1.55,1.55v2.8H11A2.81,2.81,0,0,0,8.22,11V21.91ZM28.13,27.2a.93.93,0,0,1-.93.93H11a.93.93,0,0,1-.93-.93V11a.93.93,0,0,1,.93-.93H27.2a.93.93,0,0,1,.93.93Z"></path></g></svg>
     </button>
-    <pre><code id="example-code" class="language-html">
-  
-&lt;!doctype html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;!-- IMPORTANT: Set the character set to UTF-8. Otherwise you may get weird symbols on the score. --&gt;
-    &lt;meta charset=&#34;utf-8&#34; /&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;!-- Div where the scores will be output --&gt;
-    &lt;div id=&#34;output&#34;&gt;&lt;/div&gt;
-
-    &lt;!-- Load library --&gt;
-    &lt;script src=&#34;https://cdn.jsdelivr.net/npm/vexflow@5.0.0/build/cjs/vexflow-core.js&#34;&gt;&lt;/script&gt;
-
-    &lt;script&gt;
-    /* global VexFlow */
-    VexFlow.loadFonts(&#39;Bravura&#39;, &#39;Academico&#39;).then(() =&gt; {
-      VexFlow.setFonts(&#39;Bravura&#39;, &#39;Academico&#39;);
-      const { Factory, Dot } = VexFlow;
-      const factory = new Factory({
-        renderer: { elementId: &#39;output&#39;, width: 500, height: 200 },
-      });
-
-      const system = factory.System({ width: 400 });
-
-      function dotted(staveNote, noteIndex = -1) {
-        if (noteIndex &lt; 0) {
-          Dot.buildAndAttach([staveNote], {
-            all: true,
-          });
-        } else {
-          Dot.buildAndAttach([staveNote], {
-            index: noteIndex,
-          });
-        }
-        return staveNote;
-      }
-
-      const notes = [
-        dotted(factory.StaveNote({
-          keys: [&#39;e##/5&#39;],
-          duration: &#39;8d&#39;,
-        }).addModifier(factory.Accidental({ type: &#39;##&#39; }))),
-
-        factory.StaveNote({
-          keys: [&#39;eb/5&#39;],
-          duration: &#39;16&#39;,
-        }).addModifier(factory.Accidental({ type: &#39;b&#39; })),
-
-        dotted(factory.StaveNote({
-          keys: [&#39;eb/4&#39;, &#39;d/5&#39;],
-          duration: &#39;h&#39;,
-        }), 0 /* add dot to note at index==0 */),
-
-        dotted(factory.StaveNote({
-          keys: [&#39;c/5&#39;, &#39;eb/5&#39;, &#39;g#/5&#39;],
-          duration: &#39;q&#39;,
-        })
-          .addModifier(factory.Accidental({ type: &#39;b&#39; }), 1)
-          .addModifier(factory.Accidental({ type: &#39;#&#39; }), 2)),
-      ];
-
-      factory.TextBracket({
-        from: notes[0],
-        to: notes[2],
-        text: &#39;8&#39;,
-        options: {
-          superscript: &#39;vb&#39;,
-          position: &#39;bottom&#39;,
-          line: 3,
-        },
-      });
-
-      const voice = factory.Voice().addTickables(notes);
-
-      system
-        .addStave({
-          voices: [voice],
-        })
-        .addClef(&#39;treble&#39;)
-        .addTimeSignature(&#39;4/4&#39;);
-
-      factory.draw();
-    });
-    &lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-
-
-</code></pre>
+    <pre><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><br>    <span class="token comment">&lt;!-- IMPORTANT: Set the character set to UTF-8. Otherwise you may get weird symbols on the score. --></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span><br>    <span class="token comment">&lt;!-- Div where the scores will be output --></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>output<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br>    <span class="token comment">&lt;!-- Load library --></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/vexflow@5.0.0/build/cjs/vexflow-core.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><br><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br>    <span class="token comment">/* global VexFlow */</span><br>    VexFlow<span class="token punctuation">.</span><span class="token function">loadFonts</span><span class="token punctuation">(</span><span class="token string">'Bravura'</span><span class="token punctuation">,</span> <span class="token string">'Academico'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>      VexFlow<span class="token punctuation">.</span><span class="token function">setFonts</span><span class="token punctuation">(</span><span class="token string">'Bravura'</span><span class="token punctuation">,</span> <span class="token string">'Academico'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token keyword">const</span> <span class="token punctuation">{</span> Factory<span class="token punctuation">,</span> Dot <span class="token punctuation">}</span> <span class="token operator">=</span> VexFlow<span class="token punctuation">;</span><br>      <span class="token keyword">const</span> factory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Factory</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>        <span class="token literal-property property">renderer</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">elementId</span><span class="token operator">:</span> <span class="token string">'output'</span><span class="token punctuation">,</span> <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">500</span><span class="token punctuation">,</span> <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token number">200</span> <span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>      <span class="token keyword">const</span> system <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">System</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">400</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>      <span class="token keyword">function</span> <span class="token function">dotted</span><span class="token punctuation">(</span><span class="token parameter">staveNote<span class="token punctuation">,</span> noteIndex <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        <span class="token keyword">if</span> <span class="token punctuation">(</span>noteIndex <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>          Dot<span class="token punctuation">.</span><span class="token function">buildAndAttach</span><span class="token punctuation">(</span><span class="token punctuation">[</span>staveNote<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><br>            <span class="token literal-property property">all</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>          Dot<span class="token punctuation">.</span><span class="token function">buildAndAttach</span><span class="token punctuation">(</span><span class="token punctuation">[</span>staveNote<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><br>            <span class="token literal-property property">index</span><span class="token operator">:</span> noteIndex<span class="token punctuation">,</span><br>          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span><br>        <span class="token keyword">return</span> staveNote<span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><br><br>      <span class="token keyword">const</span> notes <span class="token operator">=</span> <span class="token punctuation">[</span><br>        <span class="token function">dotted</span><span class="token punctuation">(</span>factory<span class="token punctuation">.</span><span class="token function">StaveNote</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>          <span class="token literal-property property">keys</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'e##/5'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>          <span class="token literal-property property">duration</span><span class="token operator">:</span> <span class="token string">'8d'</span><span class="token punctuation">,</span><br>        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addModifier</span><span class="token punctuation">(</span>factory<span class="token punctuation">.</span><span class="token function">Accidental</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'##'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br><br>        factory<span class="token punctuation">.</span><span class="token function">StaveNote</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>          <span class="token literal-property property">keys</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'eb/5'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>          <span class="token literal-property property">duration</span><span class="token operator">:</span> <span class="token string">'16'</span><span class="token punctuation">,</span><br>        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addModifier</span><span class="token punctuation">(</span>factory<span class="token punctuation">.</span><span class="token function">Accidental</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'b'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br><br>        <span class="token function">dotted</span><span class="token punctuation">(</span>factory<span class="token punctuation">.</span><span class="token function">StaveNote</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>          <span class="token literal-property property">keys</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'eb/4'</span><span class="token punctuation">,</span> <span class="token string">'d/5'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>          <span class="token literal-property property">duration</span><span class="token operator">:</span> <span class="token string">'h'</span><span class="token punctuation">,</span><br>        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span> <span class="token comment">/* add dot to note at index==0 */</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br><br>        <span class="token function">dotted</span><span class="token punctuation">(</span>factory<span class="token punctuation">.</span><span class="token function">StaveNote</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>          <span class="token literal-property property">keys</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'c/5'</span><span class="token punctuation">,</span> <span class="token string">'eb/5'</span><span class="token punctuation">,</span> <span class="token string">'g#/5'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>          <span class="token literal-property property">duration</span><span class="token operator">:</span> <span class="token string">'q'</span><span class="token punctuation">,</span><br>        <span class="token punctuation">}</span><span class="token punctuation">)</span><br>          <span class="token punctuation">.</span><span class="token function">addModifier</span><span class="token punctuation">(</span>factory<span class="token punctuation">.</span><span class="token function">Accidental</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'b'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><br>          <span class="token punctuation">.</span><span class="token function">addModifier</span><span class="token punctuation">(</span>factory<span class="token punctuation">.</span><span class="token function">Accidental</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'#'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>      <span class="token punctuation">]</span><span class="token punctuation">;</span><br><br>      factory<span class="token punctuation">.</span><span class="token function">TextBracket</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>        <span class="token literal-property property">from</span><span class="token operator">:</span> notes<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>        <span class="token literal-property property">to</span><span class="token operator">:</span> notes<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>        <span class="token literal-property property">text</span><span class="token operator">:</span> <span class="token string">'8'</span><span class="token punctuation">,</span><br>        <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>          <span class="token literal-property property">superscript</span><span class="token operator">:</span> <span class="token string">'vb'</span><span class="token punctuation">,</span><br>          <span class="token literal-property property">position</span><span class="token operator">:</span> <span class="token string">'bottom'</span><span class="token punctuation">,</span><br>          <span class="token literal-property property">line</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span><br>        <span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>      <span class="token keyword">const</span> voice <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">Voice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addTickables</span><span class="token punctuation">(</span>notes<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>      system<br>        <span class="token punctuation">.</span><span class="token function">addStave</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>          <span class="token literal-property property">voices</span><span class="token operator">:</span> <span class="token punctuation">[</span>voice<span class="token punctuation">]</span><span class="token punctuation">,</span><br>        <span class="token punctuation">}</span><span class="token punctuation">)</span><br>        <span class="token punctuation">.</span><span class="token function">addClef</span><span class="token punctuation">(</span><span class="token string">'treble'</span><span class="token punctuation">)</span><br>        <span class="token punctuation">.</span><span class="token function">addTimeSignature</span><span class="token punctuation">(</span><span class="token string">'4/4'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>      factory<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
+  </div>
   </div>
           </section>
         </main>
@@ -644,11 +544,6 @@ document.addEventListener("DOMContentLoaded", () => {
   headings.forEach(h => observer.observe(h));
 });
       </script>   
-      
-      <script>
-          hljs.highlightAll();
-      </script>
-    
     <script>
       document.addEventListener("click", (e) => {
         // Only run on clicks of copy buttons
@@ -667,5 +562,25 @@ document.addEventListener("DOMContentLoaded", () => {
         navigator.clipboard.writeText(text);
       });
     </script>
+        <script>
+          document.addEventListener("click", (e) => {
+            // Only run on clicks of copy buttons
+            const btn = e.target.closest(".run-btn");
+            if (!btn) return;
+    
+            // Find the nearest code block wrapper
+            const block = e.target.closest(".code-demo");
+            if (!block) return;
+    
+            // Grab the code text (innerText so spans from highlighting are ignored)
+            const codeEl = block.querySelector("code");
+            const text   = codeEl.innerText;
+            eval(`"use strict";\n${text}`);
+    
+            // Copy it
+            navigator.clipboard.writeText(text);
+          });
+        </script>
+    
 </body>
 </html>

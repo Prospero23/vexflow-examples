@@ -9,21 +9,13 @@
     <link rel="stylesheet" href="/vexflow-examples/css/layout.css">
     <link rel="stylesheet" href="/vexflow-examples/css/base.css">
 
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github.min.css" media="(prefers-color-scheme: light)">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github-dark-dimmed.min.css" media="(prefers-color-scheme: dark)">
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-  
+  <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" media="">
   <!-- allow extra tags in the head -->
   
     
       <!-- Load Library -->
     
       <script src="https://cdn.jsdelivr.net/npm/vexflow@5.0.0/build/cjs/vexflow-core.js"></script>
-    
-      <!-- Code Controls -->
-    
-      <script src="/vexflow-examples/js/main.js"></script>
     
   
   <title>vexflow-core.js</title>
@@ -295,7 +287,6 @@
     </div>
   
 </div>
-
 </div>
       
 
@@ -316,7 +307,7 @@
     <button class="copy-btn svg-btn" type="button" aria-label="Copy code">
     <svg fill="blue" viewBox="0 0 32 32" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M27.2,8.22H23.78V5.42A3.42,3.42,0,0,0,20.36,2H5.42A3.42,3.42,0,0,0,2,5.42V20.36a3.43,3.43,0,0,0,3.42,3.42h2.8V27.2A2.81,2.81,0,0,0,11,30H27.2A2.81,2.81,0,0,0,30,27.2V11A2.81,2.81,0,0,0,27.2,8.22ZM5.42,21.91a1.55,1.55,0,0,1-1.55-1.55V5.42A1.54,1.54,0,0,1,5.42,3.87H20.36a1.55,1.55,0,0,1,1.55,1.55v2.8H11A2.81,2.81,0,0,0,8.22,11V21.91ZM28.13,27.2a.93.93,0,0,1-.93.93H11a.93.93,0,0,1-.93-.93V11a.93.93,0,0,1,.93-.93H27.2a.93.93,0,0,1,.93.93Z"></path></g></svg>
     </button>
-    <pre><code class="language-javascript">VexFlow.BUILD</code></pre>
+    <pre><code class="language-js">VexFlow<span class="token punctuation">.</span><span class="token constant">BUILD</span></code></pre>
   </div>
 <p>
   Since this build does not preload any fonts, you will need to manually load fonts with your favorite method (e.g.,
@@ -325,53 +316,37 @@
   <code>VexFlow.loadFonts(fontName1, fontName2, fontName3, ...)</code>, we will load the requested fonts from our
   CDN:
 </p>
-<button onclick="runCode(0)">Run Code</button>
-<div class="code-block">
+
+
+  <div class="code-demo">
+    <button type="button" class="run-btn" data-demo="">Run Code</button>
+    
+    <div class="code-block">
     <button class="copy-btn svg-btn" type="button" aria-label="Copy code">
     <svg fill="blue" viewBox="0 0 32 32" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M27.2,8.22H23.78V5.42A3.42,3.42,0,0,0,20.36,2H5.42A3.42,3.42,0,0,0,2,5.42V20.36a3.43,3.43,0,0,0,3.42,3.42h2.8V27.2A2.81,2.81,0,0,0,11,30H27.2A2.81,2.81,0,0,0,30,27.2V11A2.81,2.81,0,0,0,27.2,8.22ZM5.42,21.91a1.55,1.55,0,0,1-1.55-1.55V5.42A1.54,1.54,0,0,1,5.42,3.87H20.36a1.55,1.55,0,0,1,1.55,1.55v2.8H11A2.81,2.81,0,0,0,8.22,11V21.91ZM28.13,27.2a.93.93,0,0,1-.93.93H11a.93.93,0,0,1-.93-.93V11a.93.93,0,0,1,.93-.93H27.2a.93.93,0,0,1,.93.93Z"></path></g></svg>
     </button>
-    <pre><code id="code0" class="language-javascript"></code></pre>
+    <pre><code class="language-js">VexFlow<span class="token punctuation">.</span><span class="token function">loadFonts</span><span class="token punctuation">(</span><span class="token string">"Petaluma"</span><span class="token punctuation">,</span> <span class="token string">"Petaluma Script"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">{</span><br>    VexFlow<span class="token punctuation">.</span><span class="token function">setFonts</span><span class="token punctuation">(</span><span class="token string">"Petaluma"</span><span class="token punctuation">,</span> <span class="token string">"Petaluma Script"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>VexFlow<span class="token punctuation">.</span><span class="token function">getFonts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
   </div>
+  </div>  
+
 <p>
   Draw a stave with a treble clef, time signature, and a few notes. Note that if you have not called
   <code>VexFlow.loadFonts(...)</code> and <code>VexFlow.setFonts(...)</code>, you will likely see empty boxes where the music symbols would
   normally be drawn.
 </p>
-<button onclick="runCode(1)">Run Code</button>
-<div class="code-block">
+
+  <div class="code-demo">
+    <button type="button" class="run-btn" data-demo="">Run Code</button>
+    
+    <div class="code-block">
     <button class="copy-btn svg-btn" type="button" aria-label="Copy code">
     <svg fill="blue" viewBox="0 0 32 32" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M27.2,8.22H23.78V5.42A3.42,3.42,0,0,0,20.36,2H5.42A3.42,3.42,0,0,0,2,5.42V20.36a3.43,3.43,0,0,0,3.42,3.42h2.8V27.2A2.81,2.81,0,0,0,11,30H27.2A2.81,2.81,0,0,0,30,27.2V11A2.81,2.81,0,0,0,27.2,8.22ZM5.42,21.91a1.55,1.55,0,0,1-1.55-1.55V5.42A1.54,1.54,0,0,1,5.42,3.87H20.36a1.55,1.55,0,0,1,1.55,1.55v2.8H11A2.81,2.81,0,0,0,8.22,11V21.91ZM28.13,27.2a.93.93,0,0,1-.93.93H11a.93.93,0,0,1-.93-.93V11a.93.93,0,0,1,.93-.93H27.2a.93.93,0,0,1,.93.93Z"></path></g></svg>
     </button>
-    <pre><code id="code1" class="language-javascript"></code></pre>
+    <pre><code class="language-js"><span class="token keyword">const</span> factory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VexFlow<span class="token punctuation">.</span>Factory</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>    <span class="token literal-property property">renderer</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">elementId</span><span class="token operator">:</span> <span class="token string">'output'</span><span class="token punctuation">,</span> <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">300</span><span class="token punctuation">,</span> <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token number">180</span> <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <br><span class="token keyword">const</span> score <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">EasyScore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">const</span> system <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">System</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <br>system<br>  <span class="token punctuation">.</span><span class="token function">addStave</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>    <span class="token literal-property property">voices</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>      score<span class="token punctuation">.</span><span class="token function">voice</span><span class="token punctuation">(</span>score<span class="token punctuation">.</span><span class="token function">notes</span><span class="token punctuation">(</span><span class="token string">'C#5/q, B4, A4, G#4'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">stem</span><span class="token operator">:</span> <span class="token string">'up'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>      score<span class="token punctuation">.</span><span class="token function">voice</span><span class="token punctuation">(</span>score<span class="token punctuation">.</span><span class="token function">notes</span><span class="token punctuation">(</span><span class="token string">'C#4/h, C#4'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">stem</span><span class="token operator">:</span> <span class="token string">'down'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>    <span class="token punctuation">]</span><span class="token punctuation">,</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">addClef</span><span class="token punctuation">(</span><span class="token string">'treble'</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">addTimeSignature</span><span class="token punctuation">(</span><span class="token string">'4/4'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <br>factory<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
   </div>
-<div id="output"></div>    
-<script>
-  const code0 = `VexFlow.loadFonts("Petaluma", "Petaluma Script").then(()=>{
-VexFlow.setFonts("Petaluma", "Petaluma Script");
-console.log(VexFlow.getFonts());
-});`;
+  </div>
 
-  const code1 = `const factory = new VexFlow.Factory({
-renderer: { elementId: 'output', width: 300, height: 180 },
-});
-
-const score = factory.EasyScore();
-const system = factory.System();
-
-system
-.addStave({
-voices: [
-  score.voice(score.notes('C#5/q, B4, A4, G#4', { stem: 'up' })),
-  score.voice(score.notes('C#4/h, C#4', { stem: 'down' })),
-],
-})
-.addClef('treble')
-.addTimeSignature('4/4');
-
-factory.draw();`;
-
-  showCode(code0, code1);
-</script>
+<div id="output"></div>
           </section>
         </main>
         <div class="overlay" id="overlay"></div>
@@ -435,11 +410,6 @@ document.addEventListener("DOMContentLoaded", () => {
   headings.forEach(h => observer.observe(h));
 });
       </script>   
-      
-      <script>
-          hljs.highlightAll();
-      </script>
-    
     <script>
       document.addEventListener("click", (e) => {
         // Only run on clicks of copy buttons
@@ -458,5 +428,25 @@ document.addEventListener("DOMContentLoaded", () => {
         navigator.clipboard.writeText(text);
       });
     </script>
+        <script>
+          document.addEventListener("click", (e) => {
+            // Only run on clicks of copy buttons
+            const btn = e.target.closest(".run-btn");
+            if (!btn) return;
+    
+            // Find the nearest code block wrapper
+            const block = e.target.closest(".code-demo");
+            if (!block) return;
+    
+            // Grab the code text (innerText so spans from highlighting are ignored)
+            const codeEl = block.querySelector("code");
+            const text   = codeEl.innerText;
+            eval(`"use strict";\n${text}`);
+    
+            // Copy it
+            navigator.clipboard.writeText(text);
+          });
+        </script>
+    
 </body>
 </html>

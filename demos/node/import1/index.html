@@ -9,11 +9,7 @@
     <link rel="stylesheet" href="/vexflow-examples/css/layout.css">
     <link rel="stylesheet" href="/vexflow-examples/css/base.css">
 
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github.min.css" media="(prefers-color-scheme: light)">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github-dark-dimmed.min.css" media="(prefers-color-scheme: dark)">
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-  
+  <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" media="">
   <!-- allow extra tags in the head -->
   
   <title>Import Example 1</title>
@@ -285,7 +281,6 @@
     </div>
   
 </div>
-
 </div>
       
 
@@ -301,58 +296,15 @@
 
 
 
-
-<div class="code-block">
+  <div class="code-demo">
+    
+    
+    <div class="code-block">
     <button class="copy-btn svg-btn" type="button" aria-label="Copy code">
     <svg fill="blue" viewBox="0 0 32 32" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M27.2,8.22H23.78V5.42A3.42,3.42,0,0,0,20.36,2H5.42A3.42,3.42,0,0,0,2,5.42V20.36a3.43,3.43,0,0,0,3.42,3.42h2.8V27.2A2.81,2.81,0,0,0,11,30H27.2A2.81,2.81,0,0,0,30,27.2V11A2.81,2.81,0,0,0,27.2,8.22ZM5.42,21.91a1.55,1.55,0,0,1-1.55-1.55V5.42A1.54,1.54,0,0,1,5.42,3.87H20.36a1.55,1.55,0,0,1,1.55,1.55v2.8H11A2.81,2.81,0,0,0,8.22,11V21.91ZM28.13,27.2a.93.93,0,0,1-.93.93H11a.93.93,0,0,1-.93-.93V11a.93.93,0,0,1,.93-.93H27.2a.93.93,0,0,1,.93.93Z"></path></g></svg>
     </button>
-    <pre><code id="example-code" class="language-js">
-  
-// Run:
-//   node import.mjs
-
-// This file is an ES module that imports VexFlow.
-// This file needs to have the .mjs extension, or the nearest package.json needs to specify type=&#34;module&#34;.
-// Otherwise, the import statement will not work.
-
-import { Vex } from &#39;vexflow&#39;;
-
-// The above import statement is equivalent to the following:
-// import { Vex } from &#39;../../build/esm/entry/vexflow.js&#39;;
-// It works because our package.json has an &#34;exports&#34; field that points to the correct ESM entry point:
-/*
-&#34;exports&#34;: {
-  &#34;.&#34;: {
-    &#34;types&#34;: &#34;./build/types/entry/vexflow.d.ts&#34;,
-    &#34;require&#34;: &#34;./build/cjs/vexflow.js&#34;,
-    &#34;import&#34;: &#34;./build/esm/entry/vexflow.js&#34;
-  },
-  ...
-}
-*/
-
-// If you want to use the vexflow-bravura.js distribution, which bundles the Bravura &amp; Academico fonts you can import it like this:
-// import { Vex } from &#39;vexflow/bravura&#39;;
-
-// To use this ES module in a script tag, you will need to set type=&#34;module&#34;.
-// Additionally, the webpage will need to be able to resolve to the correct ESM entry point.
-// Normally, you would use a bundler like webpack / esbuild / rollup / etc to do this.
-//   &lt;script src=&#34;...&#34; type=&#34;module&#34;&gt;&lt;/script&gt;.
-
-console.log(&#39;VexFlow VERSION: &#39; + VexFlow.BUILD.VERSION);
-console.log(&#39;VexFlow BUILD ID: &#39; + VexFlow.BUILD.ID);
-console.log(&#39;VexFlow BUILD DATE: &#39; + VexFlow.BUILD.DATE);
-
-// Some notes about running as an ES module.
-// console.log(this);       // this === undefined
-// console.log(window);     // ReferenceError: window is not defined
-// console.log(self);       // ReferenceError: self is not defined
-// console.log(global);     // global is the Node JS global object.
-// console.log(globalThis); // globalThis is the Node JS global object.
-// console.log(globalThis === global); // true
-
-
-</code></pre>
+    <pre><code class="language-mjs">// Run:<br>//   node import.mjs<br><br>// This file is an ES module that imports VexFlow.<br>// This file needs to have the .mjs extension, or the nearest package.json needs to specify type="module".<br>// Otherwise, the import statement will not work.<br><br>import { Vex } from 'vexflow';<br><br>// The above import statement is equivalent to the following:<br>// import { Vex } from '../../build/esm/entry/vexflow.js';<br>// It works because our package.json has an "exports" field that points to the correct ESM entry point:<br>/*<br>"exports": {<br>  ".": {<br>    "types": "./build/types/entry/vexflow.d.ts",<br>    "require": "./build/cjs/vexflow.js",<br>    "import": "./build/esm/entry/vexflow.js"<br>  },<br>  ...<br>}<br>*/<br><br>// If you want to use the vexflow-bravura.js distribution, which bundles the Bravura & Academico fonts you can import it like this:<br>// import { Vex } from 'vexflow/bravura';<br><br>// To use this ES module in a script tag, you will need to set type="module".<br>// Additionally, the webpage will need to be able to resolve to the correct ESM entry point.<br>// Normally, you would use a bundler like webpack / esbuild / rollup / etc to do this.<br>//   <script src="..." type="module"></script>.<br><br>console.log('VexFlow VERSION: ' + VexFlow.BUILD.VERSION);<br>console.log('VexFlow BUILD ID: ' + VexFlow.BUILD.ID);<br>console.log('VexFlow BUILD DATE: ' + VexFlow.BUILD.DATE);<br><br>// Some notes about running as an ES module.<br>// console.log(this);       // this === undefined<br>// console.log(window);     // ReferenceError: window is not defined<br>// console.log(self);       // ReferenceError: self is not defined<br>// console.log(global);     // global is the Node JS global object.<br>// console.log(globalThis); // globalThis is the Node JS global object.<br>// console.log(globalThis === global); // true</code></pre>
+  </div>
   </div>
           </section>
         </main>
@@ -417,11 +369,6 @@ document.addEventListener("DOMContentLoaded", () => {
   headings.forEach(h => observer.observe(h));
 });
       </script>   
-      
-      <script>
-          hljs.highlightAll();
-      </script>
-    
     <script>
       document.addEventListener("click", (e) => {
         // Only run on clicks of copy buttons
@@ -440,5 +387,25 @@ document.addEventListener("DOMContentLoaded", () => {
         navigator.clipboard.writeText(text);
       });
     </script>
+        <script>
+          document.addEventListener("click", (e) => {
+            // Only run on clicks of copy buttons
+            const btn = e.target.closest(".run-btn");
+            if (!btn) return;
+    
+            // Find the nearest code block wrapper
+            const block = e.target.closest(".code-demo");
+            if (!block) return;
+    
+            // Grab the code text (innerText so spans from highlighting are ignored)
+            const codeEl = block.querySelector("code");
+            const text   = codeEl.innerText;
+            eval(`"use strict";\n${text}`);
+    
+            // Copy it
+            navigator.clipboard.writeText(text);
+          });
+        </script>
+    
 </body>
 </html>

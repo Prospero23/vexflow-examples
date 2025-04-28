@@ -9,11 +9,7 @@
     <link rel="stylesheet" href="/vexflow-examples/css/layout.css">
     <link rel="stylesheet" href="/vexflow-examples/css/base.css">
 
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github.min.css" media="(prefers-color-scheme: light)">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github-dark-dimmed.min.css" media="(prefers-color-scheme: dark)">
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-  
+  <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" media="">
   <!-- allow extra tags in the head -->
   
   <title>Require Example 1</title>
@@ -285,7 +281,6 @@
     </div>
   
 </div>
-
 </div>
       
 
@@ -301,29 +296,15 @@
 
 
 
-
-<div class="code-block">
+  <div class="code-demo">
+    
+    
+    <div class="code-block">
     <button class="copy-btn svg-btn" type="button" aria-label="Copy code">
     <svg fill="blue" viewBox="0 0 32 32" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M27.2,8.22H23.78V5.42A3.42,3.42,0,0,0,20.36,2H5.42A3.42,3.42,0,0,0,2,5.42V20.36a3.43,3.43,0,0,0,3.42,3.42h2.8V27.2A2.81,2.81,0,0,0,11,30H27.2A2.81,2.81,0,0,0,30,27.2V11A2.81,2.81,0,0,0,27.2,8.22ZM5.42,21.91a1.55,1.55,0,0,1-1.55-1.55V5.42A1.54,1.54,0,0,1,5.42,3.87H20.36a1.55,1.55,0,0,1,1.55,1.55v2.8H11A2.81,2.81,0,0,0,8.22,11V21.91ZM28.13,27.2a.93.93,0,0,1-.93.93H11a.93.93,0,0,1-.93-.93V11a.93.93,0,0,1,.93-.93H27.2a.93.93,0,0,1,.93.93Z"></path></g></svg>
     </button>
-    <pre><code id="example-code" class="language-js">
-  
-// Summary: Demonstrate different ways to require() the VexFlow module.
-// Run:
-//   node require1.js
-
-// This version bundles music fonts Bravura, Petaluma, Gonville, and text fonts Academico and Petaluma Script.
-const ModuleA = require(&#39;vexflow&#39;);
-console.log(&#39;Default Font Stack:&#39;, ModuleA.VexFlow.getFonts());
-console.log(ModuleA.VexFlow.BUILD);
-
-// This version bundles Bravura and Academico.
-const ModuleB = require(&#39;vexflow/bravura&#39;);
-console.log(&#39;Default Font Stack:&#39;, ModuleB.VexFlow.getFonts());
-console.log(ModuleB.VexFlow.BUILD);
-
-
-</code></pre>
+    <pre><code class="language-js"><span class="token comment">// Summary: Demonstrate different ways to require() the VexFlow module.</span><br><span class="token comment">// Run:</span><br><span class="token comment">//   node require1.js</span><br><br><span class="token comment">// This version bundles music fonts Bravura, Petaluma, Gonville, and text fonts Academico and Petaluma Script.</span><br><span class="token keyword">const</span> ModuleA <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'vexflow'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Default Font Stack:'</span><span class="token punctuation">,</span> ModuleA<span class="token punctuation">.</span>VexFlow<span class="token punctuation">.</span><span class="token function">getFonts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ModuleA<span class="token punctuation">.</span>VexFlow<span class="token punctuation">.</span><span class="token constant">BUILD</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">// This version bundles Bravura and Academico.</span><br><span class="token keyword">const</span> ModuleB <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'vexflow/bravura'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Default Font Stack:'</span><span class="token punctuation">,</span> ModuleB<span class="token punctuation">.</span>VexFlow<span class="token punctuation">.</span><span class="token function">getFonts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ModuleB<span class="token punctuation">.</span>VexFlow<span class="token punctuation">.</span><span class="token constant">BUILD</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+  </div>
   </div>
           </section>
         </main>
@@ -388,11 +369,6 @@ document.addEventListener("DOMContentLoaded", () => {
   headings.forEach(h => observer.observe(h));
 });
       </script>   
-      
-      <script>
-          hljs.highlightAll();
-      </script>
-    
     <script>
       document.addEventListener("click", (e) => {
         // Only run on clicks of copy buttons
@@ -411,5 +387,25 @@ document.addEventListener("DOMContentLoaded", () => {
         navigator.clipboard.writeText(text);
       });
     </script>
+        <script>
+          document.addEventListener("click", (e) => {
+            // Only run on clicks of copy buttons
+            const btn = e.target.closest(".run-btn");
+            if (!btn) return;
+    
+            // Find the nearest code block wrapper
+            const block = e.target.closest(".code-demo");
+            if (!block) return;
+    
+            // Grab the code text (innerText so spans from highlighting are ignored)
+            const codeEl = block.querySelector("code");
+            const text   = codeEl.innerText;
+            eval(`"use strict";\n${text}`);
+    
+            // Copy it
+            navigator.clipboard.writeText(text);
+          });
+        </script>
+    
 </body>
 </html>
