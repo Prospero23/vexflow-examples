@@ -15,7 +15,7 @@
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" media="">
   <!-- allow extra tags in the head -->
   
-  <title>vexflow.esm.js</title>
+  <title>Glyph Inspector</title>
 </head>
 <body>
    <div class="container">
@@ -82,7 +82,7 @@
             </li>
           
             <li>
-              <a href="/vexflow-examples/demos/entry/vexflow.esm/" class="active">vexflow.esm.js</a>
+              <a href="/vexflow-examples/demos/entry/vexflow.esm/" class="">vexflow.esm.js</a>
             </li>
           
             <li>
@@ -293,7 +293,7 @@
         <ul class="section-links">
           
             <li>
-              <a href="/vexflow-examples/demos/tools/glyphs/" class="">Glyph Inspector</a>
+              <a href="/vexflow-examples/demos/tools/glyphs/" class="active">Glyph Inspector</a>
             </li>
           
         </ul>
@@ -328,46 +328,197 @@
               <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"></path></svg>
           </button>
           
-<h1>vexflow.esm.js</h1>
-<p>
-  This page loads the <code>vexflow.js</code> ESM build, which bundles the Bravura, Petaluma, and Gonville music
-  fonts. ESM builds are not minified. You can use a bundler to minify the code for production use, or you can import
-  from a CDN that does minification, like https://www.skypack.dev/.
-</p>
-<p><a href="https://cdn.jsdelivr.net/npm/vexflow@5.0.0/build/esm/entry/vexflow.js">Click here to view the vexflow.js file</a>.</p>
-<p>Open the developer console and explore the <code>VexFlow</code> object. Below are some things you can try:</p>
-<p>Get an object with the build information of the VexFlow library.</p>
-<div class="code-block">
-    <button class="copy-btn svg-btn" type="button" aria-label="Copy code">
-    <svg fill="blue" viewBox="0 0 32 32" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M27.2,8.22H23.78V5.42A3.42,3.42,0,0,0,20.36,2H5.42A3.42,3.42,0,0,0,2,5.42V20.36a3.43,3.43,0,0,0,3.42,3.42h2.8V27.2A2.81,2.81,0,0,0,11,30H27.2A2.81,2.81,0,0,0,30,27.2V11A2.81,2.81,0,0,0,27.2,8.22ZM5.42,21.91a1.55,1.55,0,0,1-1.55-1.55V5.42A1.54,1.54,0,0,1,5.42,3.87H20.36a1.55,1.55,0,0,1,1.55,1.55v2.8H11A2.81,2.81,0,0,0,8.22,11V21.91ZM28.13,27.2a.93.93,0,0,1-.93.93H11a.93.93,0,0,1-.93-.93V11a.93.93,0,0,1,.93-.93H27.2a.93.93,0,0,1,.93.93Z"></path></g></svg>
-    </button>
-    <pre><code class="language-js">VexFlow<span class="token punctuation">.</span><span class="token constant">BUILD</span></code></pre>
-  </div>
+    <style>
+      div#top {
+        top: 0px;
+        background: var(--color-background-secondary);
+        position: fixed;
+        border-radius: 30px;
+      }
+      div#glyphs {
+        margin-top: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      p {
+        margin: 10px;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      h1 {
+        margin: 10px;
+        font-size: 40px;
+      }
+      a{
+        cursor: pointer;
+      }
+    </style>
 
-<p>Get the default font stack, as an array of strings.</p>
-<div class="code-block">
-    <button class="copy-btn svg-btn" type="button" aria-label="Copy code">
-    <svg fill="blue" viewBox="0 0 32 32" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M27.2,8.22H23.78V5.42A3.42,3.42,0,0,0,20.36,2H5.42A3.42,3.42,0,0,0,2,5.42V20.36a3.43,3.43,0,0,0,3.42,3.42h2.8V27.2A2.81,2.81,0,0,0,11,30H27.2A2.81,2.81,0,0,0,30,27.2V11A2.81,2.81,0,0,0,27.2,8.22ZM5.42,21.91a1.55,1.55,0,0,1-1.55-1.55V5.42A1.54,1.54,0,0,1,5.42,3.87H20.36a1.55,1.55,0,0,1,1.55,1.55v2.8H11A2.81,2.81,0,0,0,8.22,11V21.91ZM28.13,27.2a.93.93,0,0,1-.93.93H11a.93.93,0,0,1-.93-.93V11a.93.93,0,0,1,.93-.93H27.2a.93.93,0,0,1,.93.93Z"></path></g></svg>
-    </button>
-    <pre><code class="language-js">VexFlow<span class="token punctuation">.</span><span class="token function">getFonts</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-  </div>
+    <!-- fonts.css defines all the @font-face rules. -->
+    <link rel="stylesheet" href="/vexflow-examples/tests/fonts.css" type="text/css" media="screen">
+    <script src="/vexflow-examples/js/glyphnames.js"></script>
 
-<p>Draw a stave with a treble clef, time signature, and a few notes.</p>
+    <div id="font-preload">
+      <!--
+        Preload fonts and styles for testing.
+        The empty tags <b></b>, <i></i>, and <span style="font-weight: xxx"></span> are for loading different font weights/styles. 
+      -->
+      <!--
+        On this page, we are only concerned with music engraving fonts.
+        Do not load Academico, Edwin, Nepomuk, Roboto Slab, or any Finale font that is for text.
+      -->
+      <span style="font-family: Bravura"></span>
+      <span style="font-family: Bravura Text"></span>
+      <span style="font-family: Finale Ash"></span>
+      <span style="font-family: Finale Broadway"></span>
+      <span style="font-family: Finale Jazz"></span>
+      <span style="font-family: Finale Maestro"></span>
+      <span style="font-family: Gonville"></span>
+      <span style="font-family: GonvilleSmufl"></span>
+      <span style="font-family: Gootville"></span>
+      <span style="font-family: Gootville Text"></span>
+      <span style="font-family: Leipzig"></span>
+      <span style="font-family: Leland"></span>
+      <span style="font-family: Leland Text"></span>
+      <span style="font-family: MuseJazz"></span>
+      <span style="font-family: Petaluma"></span>
+      <span style="font-family: Petaluma Text"></span>
+      <span style="font-family: Sebastian"></span>
+      <span style="font-family: Sebastian Text"></span>
+    </div>
 
-  <div class="code-demo">
-    <button type="button" class="run-btn" data-demo="">Run Code</button>
-    
-    <div class="code-block">
-    <button class="copy-btn svg-btn" type="button" aria-label="Copy code">
-    <svg fill="blue" viewBox="0 0 32 32" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M27.2,8.22H23.78V5.42A3.42,3.42,0,0,0,20.36,2H5.42A3.42,3.42,0,0,0,2,5.42V20.36a3.43,3.43,0,0,0,3.42,3.42h2.8V27.2A2.81,2.81,0,0,0,11,30H27.2A2.81,2.81,0,0,0,30,27.2V11A2.81,2.81,0,0,0,27.2,8.22ZM5.42,21.91a1.55,1.55,0,0,1-1.55-1.55V5.42A1.54,1.54,0,0,1,5.42,3.87H20.36a1.55,1.55,0,0,1,1.55,1.55v2.8H11A2.81,2.81,0,0,0,8.22,11V21.91ZM28.13,27.2a.93.93,0,0,1-.93.93H11a.93.93,0,0,1-.93-.93V11a.93.93,0,0,1,.93-.93H27.2a.93.93,0,0,1,.93.93Z"></path></g></svg>
-    </button>
-    <pre><code class="language-js"><span class="token keyword">const</span> factory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VexFlow<span class="token punctuation">.</span>Factory</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  <span class="token literal-property property">renderer</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">elementId</span><span class="token operator">:</span> <span class="token string">'output'</span><span class="token punctuation">,</span> <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">300</span><span class="token punctuation">,</span> <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token number">180</span> <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <br><span class="token keyword">const</span> score <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">EasyScore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">const</span> system <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">System</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <br>system<br>  <span class="token punctuation">.</span><span class="token function">addStave</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  <span class="token literal-property property">voices</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    score<span class="token punctuation">.</span><span class="token function">voice</span><span class="token punctuation">(</span>score<span class="token punctuation">.</span><span class="token function">notes</span><span class="token punctuation">(</span><span class="token string">'C#5/q, B4, A4, G#4'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">stem</span><span class="token operator">:</span> <span class="token string">'up'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>    score<span class="token punctuation">.</span><span class="token function">voice</span><span class="token punctuation">(</span>score<span class="token punctuation">.</span><span class="token function">notes</span><span class="token punctuation">(</span><span class="token string">'C#4/h, C#4'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">stem</span><span class="token operator">:</span> <span class="token string">'down'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>  <span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">addClef</span><span class="token punctuation">(</span><span class="token string">'treble'</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">addTimeSignature</span><span class="token punctuation">(</span><span class="token string">'4/4'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <br>factory<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-  </div>
-  </div>
-<div id="output"></div>    
+    <div id="parent">
+      <div id="top">
+        <h1 id="title">Glyph Inspector</h1>
+        <p>
+          <a onclick="chooseFont('Bravura')">Bravura</a> &nbsp;
+          <a onclick="chooseFont('Bravura Text')">Bravura Text</a> &nbsp;
+          <a onclick="chooseFont('FinaleAsh')">FinaleAsh</a> &nbsp;
+          <a onclick="chooseFont('FinaleBroadway')">FinaleBroadway</a> &nbsp;
+          <a onclick="chooseFont('FinaleJazz')">FinaleJazz</a> &nbsp;
+          <a onclick="chooseFont('FinaleMaestro')">FinaleMaestro</a> &nbsp;
+          <a onclick="chooseFont('Gonville')">Gonville</a> &nbsp;
+          <a onclick="chooseFont('GonvilleSmufl')">GonvilleSmufl / Rodrigo</a> &nbsp;
+          <a onclick="chooseFont('Gootville')">Gootville</a> &nbsp;
+          <a onclick="chooseFont('Gootville Text')">Gootville Text</a> &nbsp;<br>
+          <a onclick="chooseFont('Leipzig')">Leipzig</a> &nbsp; 
+          <a onclick="chooseFont('Leland')">Leland</a> &nbsp;
+          <a onclick="chooseFont('Leland Text')">Leland Text</a> &nbsp;
+          <a onclick="chooseFont('MuseJazz')">MuseJazz</a> &nbsp;
+          <a onclick="chooseFont('Petaluma')">Petaluma</a> &nbsp;
+          <a onclick="chooseFont('Petaluma Text')">Petaluma Text</a> &nbsp;
+          <a onclick="chooseFont('Sebastian')">Sebastian</a> &nbsp;
+          <a onclick="chooseFont('Sebastian Text')">Sebastian Text</a> &nbsp;
+        </p>
+        <p>note: Cross indicates render coordinates.</p>
+      </div>
+      <div id="glyphs"></div>
+    </div>
 <script type="module">
-  import VexFlow from 'https://cdn.jsdelivr.net/npm/vexflow@5.0.0/build/esm/entry/vexflow.js';
-  window.VexFlow = VexFlow;
+  // Only proceed after all fonts have loaded.
+  const fontFaceSet = await document.fonts.ready;
+  // Show font loading status in the console.
+  const fontFaces = [...fontFaceSet];
+  for (const fontFace of fontFaces) {
+    const fontInfo = fontFace.family + ' / ' + fontFace.weight + ' / ' + fontFace.style;
+    if (fontFace.status === 'loaded') {
+      console.log(fontInfo + ' loaded!');
+    } else if (fontFace.status === 'unloaded') {
+      console.warn('*** ' + fontInfo + ' IS NOT LOADED! ***');
+    } else if (fontFace.status === 'error') {
+      console.error(fontInfo + ' ERROR');
+    } else {
+      console.log(fontInfo + ' has status: ' + fontFace.status);
+    }
+  }
+
+  function codepoint2decimal(codepoint) {
+    // Return the decimal value of 'XXXX' of codepoint, which has a string format 'U+XXXX'
+    return parseInt(codepoint.substring(2), 16);
+  }
+
+  function drawGlyph(canvasId, glyphCode, glyphName, fontName) {
+    let canvas = document.getElementById(canvasId);
+    if (!canvas) {
+      canvas = document.createElement('canvas');
+      canvas.id = canvasId;
+      // Retina display trick:
+      // Make the canvas twice as large as our width x height.
+      // Then set the scale to (2, 2).
+      canvas.width = 300;
+      canvas.height = 300;
+      canvas.style.height = '150px';
+      canvas.style.width = '150px';
+      glyphs.appendChild(canvas);
+    } else {
+      // Clear canvas
+      canvas.width = 300;
+      canvas.height = 300;
+    }
+    var ctx = canvas.getContext('2d');
+    ctx.setTransform(2, 0, 0, 2, 0, 0); // reset the scale to (2, 2)
+
+    var x = 10;
+    var y = 50;
+    // Show the glyph name.
+    const code = parseInt(glyphCode, 16);
+    ctx.fillStyle = '#222';
+    ctx.strokeStyle = '#222';
+    ctx.font = '9pt sans-serif';
+    ctx.fillText(glyphCode, x, y + 40);
+    // if the name has more than 25 characters, break it up into two lines.
+    if (glyphName.length > 20) {
+      ctx.fillText(glyphName.slice(0, 17) + '...', x, y + 50);
+      ctx.fillText(glyphName.slice(17 - glyphName.length), x, y + 60);
+    } else ctx.fillText(glyphName, x, y + 50);
+
+    const originX = x + 50;
+    const originY = y;
+
+    // Show the glyph outline.
+    ctx.fillStyle = '#006400';
+    ctx.font = '30pt ' + fontName;
+    ctx.fillText(String.fromCodePoint(code), originX, originY);
+    // See the GlyphMetrics interface in glyph.ts.
+    const metrics = ctx.measureText(String.fromCharCode(code));
+    ctx.save();
+    ctx.font = '9pt monospace';
+    const height = metrics.actualBoundingBoxDescent + metrics.actualBoundingBoxAscent;
+    ctx.fillText('w: ' + Math.round(metrics.width), x, y - 6);
+    ctx.fillText('h: ' + Math.round(height), x, y + 6);
+    ctx.restore();
+    // draw magenta cross hairs at the glyph's origin
+    ctx.strokeStyle = 'magenta';
+    ctx.beginPath();
+    ctx.moveTo(originX - 6, originY);
+    ctx.lineTo(originX + 6, originY);
+    ctx.moveTo(originX, originY - 6);
+    ctx.lineTo(originX, originY + 6);
+    ctx.stroke();
+  }
+
+  // Make this function available to the <a onclick="chooseFont(...)">...</a> links.
+  window.chooseFont = function chooseFont(fontName) {
+    document.getElementById('title').innerText = 'Glyph Inspector – ' + fontName;
+
+    var glyphs = document.getElementById('glyphs');
+    const arr = Object.keys(SMuFLGlyphInfo).sort(function (a, b) {
+      return codepoint2decimal(SMuFLGlyphInfo[a].codepoint) - codepoint2decimal(SMuFLGlyphInfo[b].codepoint);
+    });
+    arr.forEach((glyphName, index) => {
+      var glyphCode = SMuFLGlyphInfo[glyphName].codepoint.substring(2);
+      var canvasId = glyphCode + '_' + glyphName;
+      drawGlyph(canvasId, glyphCode, glyphName, fontName);
+      var alternateCodepoint = SMuFLGlyphInfo[glyphName].alternateCodepoint;
+      if (alternateCodepoint) {
+        glyphCode = alternateCodepoint.substring(2);
+        canvasId = glyphCode + '_' + glyphName;
+        drawGlyph(canvasId, glyphCode, glyphName, fontName);
+      }
+    });
+  };
 </script>
           </section>
         </main>
