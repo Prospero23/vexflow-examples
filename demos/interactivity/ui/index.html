@@ -16,6 +16,44 @@
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" media="(prefers-color-scheme: light)">
   <!-- allow extra tags in the head -->
   
+    
+      <style>
+  /* Bravura */
+  @font-face {
+    font-family: 'Bravura';
+    font-style: normal;
+    font-display: block;
+    font-weight: 400;
+    src:
+      local('Bravura'),
+      url(https://cdn.jsdelivr.net/npm/node_modules/@vexflow-fonts/bravura/bravura.woff2) format('woff2');
+  }
+
+  /* Bravura Text */
+  @font-face {
+    font-family: 'Bravura Text';
+    font-style: normal;
+    font-display: block;
+    font-weight: 400;
+    src:
+      local('Bravura Text'),
+      url(https://cdn.jsdelivr.net/npm/node_modules/@vexflow-fonts/bravuratext/bravuratext.woff2) format('woff2');
+  }
+
+  svg {
+    width: 600px;
+    height: 600px;
+    border: 1px solid gray;
+  }
+
+  svg > text {
+    font-family: 'Bravura';
+    font-size: 80pt;
+  }
+</style>
+
+    
+  
   <title>Hover Events</title>
 </head>
 <body>
@@ -355,40 +393,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"></path></svg>
           </button>
           
-<style>
-  /* Bravura */
-  @font-face {
-    font-family: 'Bravura';
-    font-style: normal;
-    font-display: block;
-    font-weight: 400;
-    src:
-      local('Bravura'),
-      url(https://cdn.jsdelivr.net/npm/node_modules/@vexflow-fonts/bravura/bravura.woff2) format('woff2');
-  }
 
-  /* Bravura Text */
-  @font-face {
-    font-family: 'Bravura Text';
-    font-style: normal;
-    font-display: block;
-    font-weight: 400;
-    src:
-      local('Bravura Text'),
-      url(https://cdn.jsdelivr.net/npm/node_modules/@vexflow-fonts/bravuratext/bravuratext.woff2) format('woff2');
-  }
-
-  svg {
-    width: 600px;
-    height: 600px;
-    border: 1px solid gray;
-  }
-
-  svg > text {
-    font-family: 'Bravura';
-    font-size: 80pt;
-  }
-</style>
 <span style="font-family: Bravura"></span>
 <span style="font-family: Bravura Text"></span>
 <h1>Hover Events</h1>
