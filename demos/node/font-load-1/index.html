@@ -16,7 +16,17 @@
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" media="(prefers-color-scheme: light)">
   <!-- allow extra tags in the head -->
   
-  <title></title>
+    
+      <link rel="preload" href="https://cdn.jsdelivr.net/npm/@vexflow-fonts/academico/academico.woff2" as="font" crossorigin="">
+    
+      <link rel="preload" href="https://cdn.jsdelivr.net/npm/@vexflow-fonts/bravura/bravura.otf" as="font" crossorigin="">
+    
+      <link rel="preload" href="https://cdn.jsdelivr.net/npm/@vexflow-fonts/petaluma/petaluma.woff2" as="font" crossorigin="">
+    
+      <link rel="preload" href="https://cdn.jsdelivr.net/npm/@vexflow-fonts/petalumascript/petalumascript.otf" as="font" crossorigin="">
+    
+  
+  <title>Font Load 1</title>
 </head>
 <body>
    <div class="container">
@@ -40,7 +50,7 @@
         <ul class="section-links">
           
             <li>
-              <a href="/vexflow-examples/guides/getting-started/" class="">QuickStart</a>
+              <a href="/vexflow-examples/guides/getting-started/" class="">Getting Started</a>
             </li>
           
             <li>
@@ -262,6 +272,10 @@
             </li>
           
             <li>
+              <a href="/vexflow-examples/demos/node/font-load-1/" class="active">font-load-1</a>
+            </li>
+          
+            <li>
               <a href="/vexflow-examples/demos/node/font-load-2/" class="">font-load-2</a>
             </li>
           
@@ -343,24 +357,108 @@
   
 </div>
 </div>
-
+      
         <main class="main-content">
           <section class="content-wrapper">
             <button id="open-sidebar-btn" class="svg-btn svg-btn--lg">
               <!-- menu svg -->
               <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"></path></svg>
           </button>
-          <!-- ---
-layout: layouts/layout.html
-title: font-load-1
-filename: font-load-1.html
+          <!--
+Summary:
+  This demo does not use the VexFlow library.
+  It demonstrates the basic idea of preloading font files and declaring CSS @font-face rules.
+-->
+    <style>
+      @font-face {
+        font-family: 'Academico';
+        font-style: normal;
+        font-display: swap;
+        src: url(https://cdn.jsdelivr.net/npm/@vexflow-fonts/academico/academico.woff2) format('woff2');
+      }
 
-eleventyNavigation:
-    key: font-load-1
-    parent: Node
-    title: font-load-1
----
-# Font Load 1 -->
+      @font-face {
+        font-family: 'Bravura';
+        font-style: normal;
+        font-display: block;
+        font-weight: 400;
+        src: url(https://cdn.jsdelivr.net/npm/@vexflow-fonts/bravura/bravura.otf) format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Petaluma';
+        font-style: normal;
+        font-display: block;
+        font-weight: 400;
+        src: url(https://cdn.jsdelivr.net/npm/@vexflow-fonts/petaluma/petaluma.woff2) format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Petaluma Script';
+        font-style: normal;
+        font-display: swap;
+        font-weight: 400;
+        src: url(https://cdn.jsdelivr.net/npm/@vexflow-fonts/petalumascript/petalumascript.otf) format('woff2');
+      }
+
+      img,
+      canvas {
+        border: 1px solid #666;
+        width: 600px;
+        height: 400px;
+        background-color: #fff;
+      }
+
+      .div {
+        font-family: Bravura, 'Petaluma Script';
+        font-size: 60px;
+        color: #333;
+        border: 1px solid #666;
+        width: 600px;
+        background-color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+    </style>
+    <h1>Font Load 1</h1>
+    <p>see page source for more information.</p>
+    <h2>CANVAS</h2>
+    <canvas width="1200" height="800"></canvas>
+    <h2>CANVAS → IMG</h2>
+    <img>
+    <h2>DIV</h2>
+    <div class="div">
+      &#xE560; &#xE1D7; &#xE050; &#xE062; &#xE080; &#xE081; &#xE082; &#xE083; &#xE084; &#xE08A; &#xE08B; &#xE1D2;
+      &#xE1D3; &#xE1D4; &#xE1D5; &#xE1D6; &#xE1D7; &#xE1D8; &#xE1D9; &#xE1DA; &#xE1DB; &#xE1DC; &#xE1DD; &#xE1DE;
+      &#xE1DF; &#xE1E0; &#xE1E1; &#xE1E2; &#xE1E7; &#xE260; &#xE261; &#xE262; &#xE263; &#xE264; &#xE245; &#xE269;
+      &#xE002; &#xE0A2; &#xE1F6; &#xE014; &#xE030; &#xE032; &#xE1FE; &#xE1FF; &#xE200; &#xE201; &#xE202; &#xE203; Hello
+      World
+    </div>
+    <script type="module">
+      // Only proceed after all fonts have loaded.
+      const fontFaceSet = await document.fonts.ready;
+      const canvas = document.querySelector('canvas');
+      const ctx = canvas.getContext('2d');
+      const musicSymbols = '\ue050 \ue062'; // treble clef and bass clef
+      let x = 20;
+      let y = 150;
+      ctx.font = '100px Bravura';
+      ctx.fillText(musicSymbols, x, y);
+      y += 180;
+      ctx.font = '60px Academico';
+      ctx.fillText('This is Academico.', x, y);
+      y += 180;
+      ctx.font = '100px Petaluma';
+      ctx.fillText(musicSymbols, x, y);
+      y += 180;
+      ctx.font = '60px Petaluma Script';
+      ctx.fillText('This is Petaluma Script.', x, y);
+
+      // render the canvas's contents to an IMG tag.
+      const img = document.querySelector('img');
+      img.src = canvas.toDataURL();
+    </script>
+
           </section>
         </main>
         <!-- only shown when navbar is open on mobile to allow for easier closing -->
